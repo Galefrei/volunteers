@@ -1,0 +1,20 @@
+Class vol.service.Volunteer
+{
+
+ClassMethod GetVolunteer(id As %String)
+{
+    quit $$$OK
+}
+
+ClassMethod UpdateVolunteer()
+{
+    quit $$$OK
+}
+
+ClassMethod CreateVolunteer()
+{
+    quit $$$OK
+}
+
+}
+

@@ -1,0 +1,9 @@
+Class vol.data.Event Extends %Persistent
+{
+
+Property Name As %String;
+
+Property DateTime As %TimeStamp;
+
+}
+

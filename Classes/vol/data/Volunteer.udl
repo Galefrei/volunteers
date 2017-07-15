@@ -1,0 +1,9 @@
+Class vol.data.Volunteer Extends (%Persistent, %Populate)
+{
+
+Property Name As %String;
+
+Property Time As %TimeStamp;
+
+}
+

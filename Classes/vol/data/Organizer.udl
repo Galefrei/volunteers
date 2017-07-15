@@ -1,0 +1,7 @@
+Class vol.data.Organizer Extends (%Persistent, %Populate)
+{
+
+Property Name As %String;
+
+}
+

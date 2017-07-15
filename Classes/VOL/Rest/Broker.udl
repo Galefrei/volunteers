@@ -1,0 +1,22 @@
+Class vol.rest.Broker Extends %CSP.REST
+{
+
+Parameter HandleCorsRequest = 1;
+
+XData UrlMap
+{
+<Routes>
+<Route Url="/volunteer/:id" Method="GET"    Call="vol.service.Volunteer:GetVolunteer"/>
+<Route Url="/volunteer"     Method="POST"   Call="vol.service.Volunteer:UpdateVolunteer"/>
+<Route Url="/volunteer"     Method="PUT"    Call="vol.service.Volunteer:CreateVolunteer"/>
+<Route Url="/event/:id"     Method="GET"    Call="vol.service.Event:GetEvent"/>
+<Route Url="/event"         Method="POST"   Call="vol.service.Event:UpdateEvent"/>
+<Route Url="/event"         Method="PUT"    Call="vol.service.Event:CreateEvent"/>
+<Route Url="/organizer/:id" Method="GET"    Call="vol.service.Organizer:GetOrganizer"/>
+<Route Url="/organizer"     Method="POST"   Call="vol.service.Organizer:UpdateOrganizer"/>
+<Route Url="/organizer"     Method="PUT"    Call="vol.service.Organizer:CreateOrganizer"/>
+</Routes>
+}
+
+}
+

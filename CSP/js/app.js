@@ -1,7 +1,7 @@
 'use strict';
 
 
-var mainModule = angular.module('mainModule', []); 
+var mainModule = angular.module('mainModule', ['ngRoute']); 
 
 mainModule.config(['$routeProvider', function($routeProvider) {
 	

@@ -1,0 +1,7 @@
+Class vol.data.Document Extends %Persistent
+{
+
+Property Document As %Stream;
+
+}
+

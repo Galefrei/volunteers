@@ -1,0 +1,30 @@
+Class vol.data.Tag Extends (%Persistent, %XML.Adaptor)
+{
+
+Property NameTag As %String;
+
+Property Type As %Integer;
+
+Storage Default
+{
+<Data name="TagDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>NameTag</Value>
+</Value>
+<Value name="3">
+<Value>Type</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.TagD</DataLocation>
+<DefaultData>TagDefaultData</DefaultData>
+<IdLocation>^vol.data.TagD</IdLocation>
+<IndexLocation>^vol.data.TagI</IndexLocation>
+<StreamLocation>^vol.data.TagS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

@@ -1,0 +1,30 @@
+Class vol.data.RegistrationOnEvent Extends %Persistent
+{
+
+Property Event As vol.data.Event [ Required ];
+
+Property Volunteer As vol.data.Volunteer [ Required ];
+
+Storage Default
+{
+<Data name="RegistrationOnEventDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Event</Value>
+</Value>
+<Value name="3">
+<Value>Volunteer</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.RegistrationOnEventD</DataLocation>
+<DefaultData>RegistrationOnEventDefaultData</DefaultData>
+<IdLocation>^vol.data.RegistrationOnEventD</IdLocation>
+<IndexLocation>^vol.data.RegistrationOnEventI</IndexLocation>
+<StreamLocation>^vol.data.RegistrationOnEventS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

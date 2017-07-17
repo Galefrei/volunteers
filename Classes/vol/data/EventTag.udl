@@ -1,0 +1,9 @@
+Class vol.data.EventTag Extends %Persistent
+{
+
+Property Event As vol.data.Event;
+
+Property Tag As vol.data.Tag;
+
+}
+

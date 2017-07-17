@@ -1,9 +1,50 @@
-Class vol.data.Volunteer Extends (%Persistent, %Populate)
+Class vol.data.Volunteer Extends %Persistent
 {
 
-Property Name As %String;
+Property Name As %String [ Required ];
 
-Property Time As %TimeStamp;
+Property DOB As %TimeStamp [ Required ];
+
+Property PhoneVolunteer As %String [ Required ];
+
+Property Email As %String [ Required ];
+
+Property CityVolunteer As vol.data.City [ Required ];
+
+Property SkillVolunteer As vol.data.Skill;
+
+Storage Default
+{
+<Data name="VolunteerDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>DOB</Value>
+</Value>
+<Value name="4">
+<Value>Phone</Value>
+</Value>
+<Value name="5">
+<Value>Email</Value>
+</Value>
+<Value name="6">
+<Value>CityVolunteer</Value>
+</Value>
+<Value name="7">
+<Value>PhoneVolunteer</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.VolunteerD</DataLocation>
+<DefaultData>VolunteerDefaultData</DefaultData>
+<IdLocation>^vol.data.VolunteerD</IdLocation>
+<IndexLocation>^vol.data.VolunteerI</IndexLocation>
+<StreamLocation>^vol.data.VolunteerS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
 
 }
 

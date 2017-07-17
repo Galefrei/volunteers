@@ -1,0 +1,25 @@
+Class vol.data.City Extends (%Persistent, %XML.Adaptor)
+{
+
+Property City As %String [ Required ];
+
+Storage Default
+{
+<Data name="CityDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>City</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.CityD</DataLocation>
+<DefaultData>CityDefaultData</DefaultData>
+<IdLocation>^vol.data.CityD</IdLocation>
+<IndexLocation>^vol.data.CityI</IndexLocation>
+<StreamLocation>^vol.data.CityS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

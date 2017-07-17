@@ -1,0 +1,7 @@
+Class vol.data.Comment Extends %Persistent
+{
+
+Property Comment As %String;
+
+}
+

@@ -1,0 +1,40 @@
+Class vol.data.Organization Extends (%Persistent, %XML.Adaptor)
+{
+
+Property Name As %String [ Required ];
+
+Property PhoneOrganization As %String [ Required ];
+
+Property CityOrganization As vol.data.City [ Required ];
+
+Property Description As %String;
+
+Storage Default
+{
+<Data name="OrganizationDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>PhoneOrganization</Value>
+</Value>
+<Value name="4">
+<Value>CityOrganization</Value>
+</Value>
+<Value name="5">
+<Value>Description</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.OrganizationD</DataLocation>
+<DefaultData>OrganizationDefaultData</DefaultData>
+<IdLocation>^vol.data.OrganizationD</IdLocation>
+<IndexLocation>^vol.data.OrganizationI</IndexLocation>
+<StreamLocation>^vol.data.OrganizationS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

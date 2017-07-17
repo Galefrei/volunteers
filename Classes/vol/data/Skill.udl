@@ -1,0 +1,9 @@
+Class vol.data.Skill Extends (%Persistent, %XML.Adaptor)
+{
+
+Property NameSkill As %String;
+
+Property ValueSkill As %String;
+
+}
+

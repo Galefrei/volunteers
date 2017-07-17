@@ -1,9 +1,40 @@
 Class vol.data.Event Extends %Persistent
 {
 
-Property Name As %String;
+Property Name As %String [ Required ];
 
-Property DateTime As %TimeStamp;
+Property BeginDate As %TimeStamp [ Required ];
+
+Property EndDate As %TimeStamp [ Required ];
+
+Property CityEvent As vol.data.City [ Required ];
+
+Storage Default
+{
+<Data name="EventDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>BeginDate</Value>
+</Value>
+<Value name="4">
+<Value>EndDate</Value>
+</Value>
+<Value name="5">
+<Value>CityEvent</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.EventD</DataLocation>
+<DefaultData>EventDefaultData</DefaultData>
+<IdLocation>^vol.data.EventD</IdLocation>
+<IndexLocation>^vol.data.EventI</IndexLocation>
+<StreamLocation>^vol.data.EventS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
 
 }
 

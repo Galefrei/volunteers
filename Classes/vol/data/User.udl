@@ -1,0 +1,40 @@
+Class vol.data.User Extends %Persistent
+{
+
+Property Login As %String [ Required ];
+
+Property Password As %String [ Required ];
+
+Property Volunteer As vol.data.Volunteer;
+
+Property Organization As vol.data.Organization;
+
+Storage Default
+{
+<Data name="UserDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Login</Value>
+</Value>
+<Value name="3">
+<Value>Password</Value>
+</Value>
+<Value name="4">
+<Value>Volunteer</Value>
+</Value>
+<Value name="5">
+<Value>Organization</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.UserD</DataLocation>
+<DefaultData>UserDefaultData</DefaultData>
+<IdLocation>^vol.data.UserD</IdLocation>
+<IndexLocation>^vol.data.UserI</IndexLocation>
+<StreamLocation>^vol.data.UserS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

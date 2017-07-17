@@ -1,0 +1,9 @@
+Class vol.data.OrganizationTag Extends %Persistent
+{
+
+Property Organization As vol.data.Organization;
+
+Property Tag As vol.data.Tag;
+
+}
+

@@ -1,5 +1,46 @@
 <html>
+<head>
 
-Hello, worldjgfhdjgfdjhd!
+</head>
 
+<script language="cache" method="OnPreHTTP" returntype="%Boolean">
+set msg = "Please log in"
+if %request.Get("btnLogin") '=""
+{
+	; to do #1
+	set un = %request.Get("txtUser")
+	set pw = %request.Get("txtPassword")
+	if un '= "" {
+		;todo2
+		&sql(select ID into :id from CZT.Employee
+			where Username = :un and Password = :pw)
+		if id '= ""{
+			;todo3
+			set employee = ##class(CZT.Employee).%OpenId(id)
+			do %session.Set("ID", id)
+			do %session.Set("Name", employee.Name)
+			set %response.Redirect="edit.csp"
+			
+		}
+		else{
+			set msg = "<font color=""red"">Invalid User</font>"
+		}
+	}
+	else {
+		set msg = "<font color=""red"">Please enter UserName</font>"
+	}
+	
+}
+quit $$$OK
+</script>
+
+<body>
+		#(msg)#
+		<form method="post" action="">
+		<p>UserName: <input type ="text" name="txtUser">
+		<p>Password: <input type ="password" name="txtPassword">
+		<p> <input type ="submit" name="btnLogin" value="Log In">
+		</form>
+<csp:include page = "footer.csp">		
+</body>
 </html>

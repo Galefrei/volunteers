@@ -1,46 +1,60 @@
+<!doctype html>
+
 <html>
-<head>
+  <head>
+    <title>Демо</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  		 <!-- <link rel="stylesheet" type="text/css" href="css/custom.css"> -->
+    <script language="javascript">
+    
+        /* Имя приложения для работы с REST, глобальная переменная */
+        var DemoSetting = {appName: '#($GET(^Settings("Demo", "WebAppName")))#'};
+    </script>
+  </head>
+  <!-- Инициализация приложения, mainModule описан в app.js -->
+  <body ng-app="mainModule">
+    <div class="container-fluid">
+        <!-- Навигация -->
+        <!--<div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="brand" href="">Демо: Caché + Angular.js + REST + Twitter Bootstrap</a>
+              
+              <div class="nav-responsive-collapse">
+                <ul class="nav">
+                  <li><a href="#/students">Студенты</a></li>
+                  <li><a href="#/groups">Группы</a></li>
+                  <li><a href="#/api">API</a></li>
+                  <li><a href="#/faculty">Факультет</a></li>
+                </ul> 
+              </div>
+            </div>
+          </div>
+        </div> 
+     -->
+       
+        <!-- Контент
+             Директива ngView дополняет сервис $route, включая отображение шаблона по текущему адресу в основном файле (index.csp). 
+             Каждый раз, когда меняется адрес, меняется и представление в соответствии с настройкой сервиса $route
+        -->
+        <div ng-view>
+        </div>
+    </div>
 
-</head>
+    <!-- Скрипты приложения -->
+    <script language="javascript"  src="lib/jquery/jquery-3.2.1.min.js"></script>
+    <script language="javascript"  src="lib/bootstrap/bootstrap.min.js"></script>
+    <script language="javascript"  src="lib/angular/angular.min.js"></script>
 
-<script language="cache" method="OnPreHTTP" returntype="%Boolean">
-set msg = "Please log in"
-if %request.Get("btnLogin") '=""
-{
-	; to do #1
-	set un = %request.Get("txtUser")
-	set pw = %request.Get("txtPassword")
-	if un '= "" {
-		;todo2
-		&sql(select ID into :id from CZT.Employee
-			where Username = :un and Password = :pw)
-		if id '= ""{
-			;todo3
-			set employee = ##class(CZT.Employee).%OpenId(id)
-			do %session.Set("ID", id)
-			do %session.Set("Name", employee.Name)
-			set %response.Redirect="edit.csp"
-			
-		}
-		else{
-			set msg = "<font color=""red"">Invalid User</font>"
-		}
-	}
-	else {
-		set msg = "<font color=""red"">Please enter UserName</font>"
-	}
-	
-}
-quit $$$OK
-</script>
+    <!--<script language="javascript"  src="js/app.js"></script>-->
+    
+    
 
-<body>
-		#(msg)#
-		<form method="post" action="">
-		<p>UserName: <input type ="text" name="txtUser">
-		<p>Password: <input type ="password" name="txtPassword">
-		<p> <input type ="submit" name="btnLogin" value="Log In">
-		</form>
-<csp:include page = "footer.csp">		
-</body>
+    
+     <!--<script language="javascript"  src="js/directives/dmgrid.js"></script>-->
+     <!--<script language="javascript"  src="js/directives/dmalert.js"></script>-->
+  </body>
 </html>

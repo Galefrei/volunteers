@@ -13,6 +13,7 @@
   </head>
   <!-- Инициализация приложения, mainModule описан в app.js -->
   <body ng-app="mainModule">
+  <header></header>
   	<div ng-view>
   	</div>
     
@@ -23,6 +24,9 @@
     <script language="javascript"  src="lib/angular/angular.min.js"></script>
 	<script language="javascript"  src="lib/angular/angular-route.min.js"></script>
     <script language="javascript"  src="js/app.js"></script>
+    
+    <script language="javascript" src="screens/main/MainCtrl.js"></script>
+    <script language="javascript" src="directives/header/header.js"></script>
     
   </body>
 </html>

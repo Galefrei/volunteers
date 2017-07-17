@@ -1,4 +1,4 @@
-MainModule.controller('MainCtrl', function(){
+mainModule.controller('MainCtrl', function(){
 	
 	
 	

@@ -2,7 +2,7 @@ mainModule.controller('RegCtrl', function($scope, $http, $location){
 	$scope.user = {
 		name: "",
 		dob: "",
-		city: "",
+		city: {id: ""},
 		phone: "",
 		email: "",
 		login: "",

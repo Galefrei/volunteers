@@ -26,6 +26,7 @@
     <script language="javascript"  src="js/app.js"></script>
     
     <script language="javascript" src="screens/main/MainCtrl.js"></script>
+    <script language="javascript" src="screens/registration/RegCtrl.js"></script>
     <script language="javascript" src="directives/header/header.js"></script>
     
   </body>

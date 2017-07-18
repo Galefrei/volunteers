@@ -1,1 +1,27 @@
-Здесь писать
+<div class="containter-fluid">
+	<div class = "col-sm-8 col-sm-offset-2">
+		<div ng-repeat="a in event">
+			<div class="panel panel-default">
+  				<div class="panel-body">
+    				<div class="jumbotron">    				
+    				<!--
+    					<div class="media">
+  							<div class="media-left media-middle">
+    							<a href="#">
+      							<img class="media-object" src="" alt="">
+    							</a>
+  							</div>
+						</div>-->						
+  						<h1>{{a.name}}</h1>
+  						<span>Начало: {{a.begin}} <br>Конец: {{a.end}}<br></span>
+  						{{a.city}}   | {{a.organization}}<br>
+  						{{a.description}}
+					</div>
+  					<p><a class="btn btn-primary btn-lg" href="#" role="button">Узнать больше</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

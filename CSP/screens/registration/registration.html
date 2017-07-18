@@ -20,7 +20,8 @@
   <div class="form-group">
     <label for="city" class="col-sm-3 control-label">Город</label>
     <div class="col-sm-6">
-      <input type="select" class="form-control" id="city" ng-model="user.city.id">
+      <select ng-options="a as a.name for a in array" class="form-control" id="city" ng-model="user.city">
+      </select>
     </div>
   </div>
   
@@ -34,7 +35,8 @@
   <div class="form-group">
     <label for="email" class="col-sm-3 control-label">E-mail</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control" id="email" ng-model="user.email">
+      <input type="text" class="form-control" id="email" ng-model="user.email">
+      </select>
     </div>
   </div>
   

@@ -9,6 +9,15 @@ mainModule.controller('RegCtrl', function($scope, $http, $location){
 		password: ""
 	};
 
+	$http.get("broker/city").then(
+			function(data){
+				$scope.array = data.data;
+			}, 
+			function(data){
+				alert(data);
+			}
+			);
+
 	$scope.save = function() {
 		$scope.user.dob = moment($scope.user.dob).format("YYYY-MM-DD HH:mm:ss");
 		$http.post("broker/volunteer", $scope.user).then(

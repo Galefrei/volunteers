@@ -1,3 +1,5 @@
+Include Src.Utils.Macro
+
 Class vol.service.Event
 {
 
@@ -13,7 +15,27 @@ ClassMethod UpdateEvent()
 
 ClassMethod CreateEvent()
 {
-    quit $$$OK
+    set st = $$$OK
+    TSTART
+    try{
+	    // Преобразовали входную строку JSON в объект proxyObject
+	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
+	    //создание ивента
+	    set event = ##class(vol.data.Event).%New()
+	    set event.Name = $ZCONVERT(data.name, "I", "UTF8")
+	    set event.BeginDate = $ZCONVERT(data.begin, "I", "UTF8")
+	    set event.EndDate = $ZCONVERT(data.end, "I", "UTF8")
+	    set event.CityEvent = ##class(vol.data.City).%OpenId(data.city.id)
+	    set event.OrganizationEvent = ##class(vol.data.Organization).%OpenId(data.organization.id)
+	    set event.UserEvent = ##class(vol.data.User).%OpenId(data.user.id)
+		$$$do(event.%Save())
+	    TCOMMIT
+	  	}
+	  	catch (ex) {
+		  	TROLLBACK
+		  	set st = ex.AsStatus()
+		}
+    return st
 }
 
 }

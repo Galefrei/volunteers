@@ -13,6 +13,8 @@
   </head>
   <!-- Инициализация приложения, mainModule описан в app.js -->
   <body ng-app="mainModule">
+  <header>
+  </header>
   	<div ng-view>
   	</div>
     

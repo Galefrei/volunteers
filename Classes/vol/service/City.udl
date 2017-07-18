@@ -16,6 +16,8 @@ ClassMethod GetCites()
 			quit:(SQLCODE '= 0)
  			set city = ##class(vol.data.City).%OpenId(id)
  			set obj = {}
+ 			
+ 			set obj.id = city.%Id()
  			set obj.name = city.City
   	   		do array.%Push(obj)  
 		}

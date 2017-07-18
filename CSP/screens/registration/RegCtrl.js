@@ -1,7 +1,7 @@
 mainModule.controller('RegCtrl', function($scope, $http, $location){
 	$scope.user = {
 		name: "",
-		years: "",
+		dob: "",
 		city: "",
 		phone: "",
 		email: "",
@@ -10,7 +10,8 @@ mainModule.controller('RegCtrl', function($scope, $http, $location){
 	};
 
 	$scope.save = function() {
-		$http.post("broker/volunteer/", $scope.user).then(
+		$scope.user.dob = moment($scope.user.dob).format("YYYY-MM-DD HH:mm:ss");
+		$http.post("broker/volunteer", $scope.user).then(
 			function(data){
 				alert("OK");
 			}, 

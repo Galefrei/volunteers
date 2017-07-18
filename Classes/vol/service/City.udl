@@ -1,0 +1,45 @@
+Class vol.service.City Extends %Persistent
+{
+
+ClassMethod GetCites()
+{
+	 	try{
+	    set array = []
+	    &sql(DECLARE StCur CURSOR FOR 
+		 	 SELECT ID
+		 	 FROM vol_data.City)
+		&sql(OPEN StCur)
+		for  
+		{	
+			&sql(FETCH StCur INTO :id) 
+			quit:(SQLCODE '= 0)
+ 			set city = ##class(vol.data.City).%OpenId(id)
+  	   		do array.%Push(city)  
+		}
+		
+		&sql(CLOSE StCur)
+		write array.%ToJSON()	    
+	    }
+	   	catch (ex){
+		set st = ex.AsStatus()
+		}
+		return st
+}
+
+Storage Default
+{
+<Data name="CityDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.service.CityD</DataLocation>
+<DefaultData>CityDefaultData</DefaultData>
+<IdLocation>^vol.service.CityD</IdLocation>
+<IndexLocation>^vol.service.CityI</IndexLocation>
+<StreamLocation>^vol.service.CityS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

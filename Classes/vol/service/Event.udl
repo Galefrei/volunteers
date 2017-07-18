@@ -45,6 +45,7 @@ ClassMethod GetEvents()
 			quit:(SQLCODE '= 0)
  			set event = ##class(vol.data.Event).%OpenId(id)
   			set obj = {}
+  			set obj.id = event.%Id()
  			set obj.name = event.Name
  		  	set obj.begin = event.BeginDate 
 	  		set obj.end = event.EndDate 

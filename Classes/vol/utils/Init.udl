@@ -1,0 +1,18 @@
+Class vol.utils.Init
+{
+
+ClassMethod CityInit()
+{
+    set city = ##class(vol.data.City).%New()
+    
+    set city.City = "Красноярск"
+    w city.%Save(), !
+    
+    set city = ##class(vol.data.City).%New()
+    
+    set city.City = "Владивосток"
+    w city.%Save(), !
+}
+
+}
+

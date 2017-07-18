@@ -1,0 +1,7 @@
+RegModule.controller('RegCtrl', function(){
+	
+	
+	
+	
+	
+	});

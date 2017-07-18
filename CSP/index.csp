@@ -8,12 +8,12 @@
     <!-- Подключение CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
   		 <!-- <link rel="stylesheet" type="text/css" href="css/custom.css"> -->
-  
-       
   </head>
   <!-- Инициализация приложения, mainModule описан в app.js -->
   <body ng-app="mainModule">
-  <header></header>
+
+  	<header></header>
+
   	<div ng-view>
   	</div>
     

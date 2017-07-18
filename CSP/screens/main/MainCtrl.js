@@ -1,0 +1,7 @@
+mainModule.controller('MainCtrl', function(){
+	
+	
+	
+	
+	
+	});

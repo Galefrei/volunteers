@@ -25,6 +25,9 @@ ClassMethod CreateOrganization()
 	    set organization.PhoneOrganization = $ZCONVERT(data.phone, "I", "UTF8")
 		set organization.CityOrganization = ##class(vol.data.City).%OpenId(data.city.id)
 		set organization.Description = $ZCONVERT(data.description, "I", "UTF8")
+	
+		
+
 		$$$do(organization.%Save())
 	    TCOMMIT
 	  	}

@@ -1,0 +1,44 @@
+Include Src.Utils.Macro
+
+Class vol.service.RegistrationOnEvent Extends %Persistent
+{
+
+ClassMethod CreateRegistrationOnEvent()
+{
+		set st = $$$OK
+    		TSTART
+    	try{
+	    // Преобразовали входную строку JSON в объект proxyObject
+	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
+	    
+	    set regEvent = ##class(vol.data.RegistrationOnEvent).%New()
+	    set regEvent.Event = ##class(vol.data.Event).%OpenId(data.event.id)
+	  	set regEvent.Volunteer = ##class(vol.data.Volunteer).%OpenId(data.volunteer.id)
+		   
+		$$$do(regEvent.%Save())
+	    TCOMMIT
+	  	}
+	  	catch (ex) {
+		  	TROLLBACK
+		  	set st = ex.AsStatus()
+		}
+    return st
+}
+
+Storage Default
+{
+<Data name="RegistrationOnEventDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.service.RegistratioF50FD</DataLocation>
+<DefaultData>RegistrationOnEventDefaultData</DefaultData>
+<IdLocation>^vol.service.RegistratioF50FD</IdLocation>
+<IndexLocation>^vol.service.RegistratioF50FI</IndexLocation>
+<StreamLocation>^vol.service.RegistratioF50FS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

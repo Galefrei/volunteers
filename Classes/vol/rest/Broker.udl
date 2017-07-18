@@ -26,6 +26,11 @@ XData UrlMap
 <Route Url="/organizer"     Method="PUT"   Call="vol.service.Organizer:UpdateOrganizer"/>
 <!--создание орга-->
 <Route Url="/organizer"     Method="POST"    Call="vol.service.Organizer:CreateOrganizer"/>
+<Route Url="/city" Method="GET"    Call="vol.service.City:GetCites"/>
+<!--создание регистрации на ивент-->
+
+<Route Url="/regEvent"     Method="POST"    Call="vol.service.RegistrationOnEvent:CreateRegistrationOnEvent"/>
+
 
 </Routes>
 }

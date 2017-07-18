@@ -20,10 +20,11 @@ ClassMethod CreateOrganizer()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание орга
-	    set organizer = ##class(vol.data.Organizater).%New()
+	    set organizer = ##class(vol.data.Organizer).%New()
 	    set organizer.Name = $ZCONVERT(data.name, "I", "UTF8")
 	    set organizer.PhoneOrganizer = $ZCONVERT(data.phone, "I", "UTF8")
 		set organizer.Organization = ##class(vol.data.Organization).%OpenId(data.organization.id)
+		
 		$$$do(organizer.%Save())
 		set user = ##class(vol.data.User).%New()
 		set user.Login = $ZCONVERT(data.login, "I", "UTF8")

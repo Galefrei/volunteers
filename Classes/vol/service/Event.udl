@@ -51,8 +51,8 @@ ClassMethod GetEvents()
 	  		set obj.city = {}
 	  		set obj.city.name = event.CityEvent.City
 	  		set obj.description = event.DescriptionEvent
-	  		set obj.organizer.organization = {}
-	  		set obj.organizer.organization.name = event.OrganizerEvent.Organization.Name
+	  		set obj.organization = {}
+	  		set obj.organization.name = event.OrganizerEvent.Organization.Name
 	   		do array.%Push(obj)  
 		}
 		

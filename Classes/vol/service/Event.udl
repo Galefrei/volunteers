@@ -5,7 +5,63 @@ Class vol.service.Event
 
 ClassMethod GetEvent(id As %String)
 {
-    quit $$$OK
+       try{
+	    set event = ##class(vol.data.Event).%OpenId(id)
+  		set obj = {}
+ 		set obj.name = event.Name
+ 		set obj.begin = event.BeginDate 
+	  	set obj.end = event.EndDate 
+	  	set obj.city = {}
+	  	set obj.city.name = event.CityEvent.City
+	   	set obj.organizer = {}
+	  	set obj.organizer.name = event.OrganizerEvent.Name
+	  	set obj.organizer.phone = event.OrganizerEvent.PhoneOrganizer
+	  	set obj.organizer.organization = {}
+	  	set obj.organizer.organization.name = event.OrganizerEvent.Organization.Name
+	  	set obj.organizer.organization.phone = event.OrganizerEvent.Organization.PhoneOrganization
+	  	set obj.description = event.DescriptionEvent
+	  	write obj.%ToJSON()
+	  	}
+	  	catch (ex){
+		set st = ex.AsStatus()
+	}
+	
+	return st
+}
+
+ClassMethod GetEvents()
+{
+        try{
+	    set array = []
+	    &sql(DECLARE StCur CURSOR FOR 
+		 	 SELECT ID
+		 	 FROM vol_data.Event)
+		&sql(OPEN StCur)
+		for  
+		{	
+			&sql(FETCH StCur INTO :id) 
+			quit:(SQLCODE '= 0)
+ 			set event = ##class(vol.data.Event).%OpenId(id)
+  			set obj = {}
+ 			set obj.name = event.Name
+ 		  	set obj.begin = event.BeginDate 
+	  		set obj.end = event.EndDate 
+	  		set obj.city = {}
+	  		set obj.city.name = event.CityEvent.City
+	  		set obj.description = event.DescriptionEvent
+	  		set obj.organizer.organization = {}
+	  		set obj.organizer.organization.name = event.OrganizerEvent.Organization.Name
+	   		do array.%Push(obj)  
+		}
+		
+		&sql(CLOSE StCur)
+		write array.%ToJSON()	    
+	    }
+	   catch (ex){
+		set st = ex.AsStatus()
+	}
+	
+	return st
 }
 
 ClassMethod UpdateEvent()
@@ -23,11 +79,12 @@ ClassMethod CreateEvent()
 	    //создание ивента
 	    set event = ##class(vol.data.Event).%New()
 	    set event.Name = $ZCONVERT(data.name, "I", "UTF8")
-	    set event.BeginDate = $ZCONVERT(data.begin, "I", "UTF8")
-	    set event.EndDate = $ZCONVERT(data.end, "I", "UTF8")
-	    set event.CityEvent = ##class(vol.data.City).%OpenId(data.city.id)
-	    set event.OrganizationEvent = ##class(vol.data.Organization).%OpenId(data.organization.id)
-	    set event.UserEvent = ##class(vol.data.User).%OpenId(data.user.id)
+	  	set event.BeginDate = $ZCONVERT(data.begin, "I", "UTF8")
+	  	set event.EndDate = $ZCONVERT(data.end, "I", "UTF8")
+	  	set event.DescriptionEvent = $ZCONVERT(data.description, "I", "UTF8") 
+	   	set event.CityEvent = ##class(vol.data.City).%OpenId(data.city.id)
+	   	set event.OrganizerEvent = ##class(vol.data.Organizer).%OpenId(data.organizer.id)
+		set event.OrganizationEvent = event.OrganizerEvent.Organization
 		$$$do(event.%Save())
 	    TCOMMIT
 	  	}

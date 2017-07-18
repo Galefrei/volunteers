@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed"></button>
-      <a class="navbar-brand" href="#/main">Волонтер</a>
+      <a class="navbar-brand" href="#!/main">Волонтер</a>
     </div>
     
     
@@ -13,7 +13,7 @@
           <input type="text" class="form-control" placeholder="Пароль">
         </div>
         <button type="submit" class="btn btn-default">Вход</button>
-        <a class="btn btn-default" href="#/registration"> 
+        <a class="btn btn-default" href="#!/registration"> 
         	Регистрация
         </a>
       </form>      

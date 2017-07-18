@@ -7,7 +7,7 @@ Property PhoneOrganization As %String [ Required ];
 
 Property CityOrganization As vol.data.City;
 
-Property Organizer As vol.data.Organizer;
+Property Organizers As list Of vol.data.Organizer;
 
 Property Description As %String;
 
@@ -28,6 +28,9 @@ Storage Default
 </Value>
 <Value name="5">
 <Value>Description</Value>
+</Value>
+<Value name="6">
+<Value>Organizer</Value>
 </Value>
 </Data>
 <DataLocation>^vol.data.OrganizationD</DataLocation>

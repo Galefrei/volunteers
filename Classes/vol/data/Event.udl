@@ -7,8 +7,6 @@ Property BeginDate As %TimeStamp [ Required ];
 
 Property EndDate As %TimeStamp [ Required ];
 
-Property OrganizationEvent As vol.data.Organization [ Required ];
-
 Property DescriptionEvent As %String;
 
 Relationship OrganizerEvent As vol.data.Organizer [ Cardinality = one, Inverse = Events, Required ];
@@ -41,6 +39,9 @@ Storage Default
 </Value>
 <Value name="8">
 <Value>DescriptionEvent</Value>
+</Value>
+<Value name="9">
+<Value>OrganizerEvent</Value>
 </Value>
 </Data>
 <DataLocation>^vol.data.EventD</DataLocation>

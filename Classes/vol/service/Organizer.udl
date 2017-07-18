@@ -1,4 +1,6 @@
-Class vol.service.Organizer
+Include Src.Utils.Macro
+
+Class vol.service.Organizer Extends %Persistent
 {
 
 ClassMethod GetOrganizer(id As %String)
@@ -13,7 +15,43 @@ ClassMethod UpdateOrganizer()
 
 ClassMethod CreateOrganizer()
 {
-    quit $$$OK
+    TSTART
+    try{
+	    // Преобразовали входную строку JSON в объект proxyObject
+	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
+	    //создание орга
+	    set organizer = ##class(vol.data.Organizater).%New()
+	    set organizer.Name = $ZCONVERT(data.name, "I", "UTF8")
+	    set organizer.PhoneOrganizer = $ZCONVERT(data.phone, "I", "UTF8")
+		set organizer.Organization = ##class(vol.data.Organization).%OpenId(data.organization.id)
+		$$$do(organizer.%Save())
+		set user = ##class(vol.data.User).%New()
+		set user.Login = $ZCONVERT(data.login, "I", "UTF8")
+		set user.Password = $ZCONVERT(data.password, "I", "UTF8")
+		set user.Organizer = organizer
+		$$$do(user.%Save())
+	    TCOMMIT
+	  	}
+	  	catch (ex) {
+		  	TROLLBACK
+		  	set st = ex.AsStatus()
+		}
+    return st
+}
+
+Storage Default
+{
+<Data name="OrganizerDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.service.OrganizerD</DataLocation>
+<DefaultData>OrganizerDefaultData</DefaultData>
+<IdLocation>^vol.service.OrganizerD</IdLocation>
+<IndexLocation>^vol.service.OrganizerI</IndexLocation>
+<StreamLocation>^vol.service.OrganizerS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
 }
 
 }

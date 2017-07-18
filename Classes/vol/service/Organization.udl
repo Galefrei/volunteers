@@ -15,30 +15,17 @@ ClassMethod UpdateOrganization()
 
 ClassMethod CreateOrganization()
 {
-   set st = $$$OK
     TSTART
     try{
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание орга
 	    set organization = ##class(vol.data.Organization).%New()
-	    /*set organization.Name = $ZCONVERT(data.name, "I", "UTF8")
+	    set organization.Name = $ZCONVERT(data.name, "I", "UTF8")
 	    set organization.PhoneOrganization = $ZCONVERT(data.phone, "I", "UTF8")
 		set organization.CityOrganization = ##class(vol.data.City).%OpenId(data.city.id)
 		set organization.Description = $ZCONVERT(data.description, "I", "UTF8")
-		*/
-		set organization.Name = "qqqq"
-	    set organization.PhoneOrganization = "1234567890"
-	//	set organization.CityOrganization = "CityOrganization"
-		set organization.Description = "Description"
-
 		$$$do(organization.%Save())
-		set user = ##class(vol.data.User).%New()
-	//	set user.Login = $ZCONVERT(data.login, "I", "UTF8")
-		set user.Login = "qqqq"
-		set user.Password = "1111"
-		set user.Organization = organization
-		$$$do(user.%Save())
 	    TCOMMIT
 	  	}
 	  	catch (ex) {

@@ -5,7 +5,7 @@
   <div class="form-group">
     <label for="name" class="col-sm-3 control-label">ФИО</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="name">
+      <input type="text" class="form-control" id="name" ng-model="user.name">
     </div>
   </div>
   
@@ -13,49 +13,49 @@
    <div class="form-group">
     <label for="years" class="col-sm-3 control-label">Дата рождения</label>
     <div class="col-sm-6">
-      <input type="date" class="form-control" id="years">
+      <input type="date" class="form-control" id="years" ng-model="user.years">
     </div>
   </div>
   
   <div class="form-group">
     <label for="city" class="col-sm-3 control-label">Город</label>
     <div class="col-sm-6">
-      <input type="select" class="form-control" id="city">
+      <input type="select" class="form-control" id="city" ng-model="user.city">
     </div>
   </div>
   
   <div class="form-group">
     <label for="phone" class="col-sm-3 control-label">Телефон</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="phone">
+      <input type="text" class="form-control" id="phone" ng-model="user.phone">
    </div>
   </div>
    
   <div class="form-group">
     <label for="email" class="col-sm-3 control-label">E-mail</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control" id="email">
+      <input type="email" class="form-control" id="email" ng-model="user.email">
     </div>
   </div>
   
   <div class="form-group">
     <label for="login" class="col-sm-3 control-label">Логин</label>
     <div class="col-sm-6">
-      <input type="login" class="form-control" id="login">
+      <input type="login" class="form-control" id="login" ng-model="user.login">
     </div>
   </div>
   
   <div class="form-group">
     <label for="password1" class="col-sm-3 control-label">Пароль</label>
     <div class="col-sm-6">
-      <input type="password" class="form-control" id="password1">
+      <input type="password" class="form-control" id="password1" ng-model="user.password">
     </div>
   </div>
   
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-6">
-      <button type="submit" class="btn btn-default">Зарегистрироваться</button>
-      <button type="submit" class="btn btn-default">Отмена</button>
+      <button type="submit" class="btn btn-default" ng-click="save()">Зарегистрироваться</button>
+      <button type="cancel" class="btn btn-default" ng-click="cancel()">Отмена</button>
     </div>
   </div>
 </form>

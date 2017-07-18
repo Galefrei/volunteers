@@ -5,6 +5,7 @@ Class vol.service.Event
 
 ClassMethod GetEvent(id As %String)
 {
+       set st = $$$OK
        try{
 	    set event = ##class(vol.data.Event).%OpenId(id)
   		set obj = {}
@@ -31,6 +32,7 @@ ClassMethod GetEvent(id As %String)
 
 ClassMethod GetEvents()
 {
+        set st = $$$OK
         try{
 	    set array = []
 	    &sql(DECLARE StCur CURSOR FOR 

@@ -3,6 +3,7 @@ Class vol.service.City Extends %Persistent
 
 ClassMethod GetCites()
 {
+	set st = $$$OK
 	 	try{
 	    set array = []
 	    &sql(DECLARE StCur CURSOR FOR 
@@ -14,7 +15,9 @@ ClassMethod GetCites()
 			&sql(FETCH StCur INTO :id) 
 			quit:(SQLCODE '= 0)
  			set city = ##class(vol.data.City).%OpenId(id)
-  	   		do array.%Push(city)  
+ 			set obj = {}
+ 			set obj.name = city.City
+  	   		do array.%Push(obj)  
 		}
 		
 		&sql(CLOSE StCur)

@@ -7,6 +7,12 @@ Property BeginDate As %TimeStamp [ Required ];
 
 Property EndDate As %TimeStamp [ Required ];
 
+Property OrganizationEvent As vol.data.Organization [ Required ];
+
+Property DescriptionEvent As %String;
+
+Relationship OrganizerEvent As vol.data.Organizer [ Cardinality = one, Inverse = Events, Required ];
+
 Property CityEvent As vol.data.City [ Required ];
 
 Storage Default
@@ -27,6 +33,15 @@ Storage Default
 <Value name="5">
 <Value>CityEvent</Value>
 </Value>
+<Value name="6">
+<Value>OrganizationEvent</Value>
+</Value>
+<Value name="7">
+<Value>UserEvent</Value>
+</Value>
+<Value name="8">
+<Value>DescriptionEvent</Value>
+</Value>
 </Data>
 <DataLocation>^vol.data.EventD</DataLocation>
 <DefaultData>EventDefaultData</DefaultData>
@@ -35,6 +50,8 @@ Storage Default
 <StreamLocation>^vol.data.EventS</StreamLocation>
 <Type>%Library.CacheStorage</Type>
 }
+
+Index NameIndex On Name;
 
 }
 

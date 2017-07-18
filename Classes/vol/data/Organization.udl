@@ -5,7 +5,9 @@ Property Name As %String [ Required ];
 
 Property PhoneOrganization As %String [ Required ];
 
-Property CityOrganization As vol.data.City [ Required ];
+Property CityOrganization As vol.data.City;
+
+Property Organizer As vol.data.Organizer;
 
 Property Description As %String;
 

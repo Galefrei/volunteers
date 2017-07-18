@@ -18,7 +18,7 @@
   	</div>
     
 
-    <!-- Скрипты приложения -->
+    <!-- Скрипты  приложения -->
     <script language="javascript"  src="lib/jquery/jquery-3.2.1.min.js"></script>
     <script language="javascript"  src="lib/bootstrap/bootstrap.min.js"></script>
     <script language="javascript"  src="lib/angular/angular.min.js"></script>

@@ -5,7 +5,7 @@ Property Name As %String [ Required ];
 
 Property DOB As %TimeStamp [ Required ];
 
-Property PhoneVolunteer As %String [ Required ];
+Property PhoneVolunteer As %String(MAXLEN = 12, MINLEN = 11) [ Required ];
 
 Property Email As %String [ Required ];
 
@@ -36,6 +36,15 @@ Storage Default
 </Value>
 <Value name="7">
 <Value>PhoneVolunteer</Value>
+</Value>
+<Value name="8">
+<Value>FirstName</Value>
+</Value>
+<Value name="9">
+<Value>LastName</Value>
+</Value>
+<Value name="10">
+<Value>SkillVolunteer</Value>
 </Value>
 </Data>
 <DataLocation>^vol.data.VolunteerD</DataLocation>

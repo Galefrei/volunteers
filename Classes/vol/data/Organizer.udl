@@ -1,7 +1,37 @@
-Class vol.data.Organizer Extends (%Persistent, %Populate)
+Class vol.data.Organizer Extends %Persistent
 {
 
-Property Name As %String;
+Property Name As %String [ Required ];
+
+Property PhoneOrganizer As %String [ Required ];
+
+Property Organization As vol.data.Organization [ Required ];
+
+Relationship Events As vol.data.Event [ Cardinality = many, Inverse = OrganizerEvent ];
+
+Storage Default
+{
+<Data name="OrganizerDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>PhoneOrganizer</Value>
+</Value>
+<Value name="4">
+<Value>Organization</Value>
+</Value>
+</Data>
+<DataLocation>^vol.data.OrganizerD</DataLocation>
+<DefaultData>OrganizerDefaultData</DefaultData>
+<IdLocation>^vol.data.OrganizerD</IdLocation>
+<IndexLocation>^vol.data.OrganizerI</IndexLocation>
+<StreamLocation>^vol.data.OrganizerS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
 
 }
 

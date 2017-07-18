@@ -7,14 +7,26 @@ XData UrlMap
 {
 <Routes>
 <Route Url="/volunteer/:id" Method="GET"    Call="vol.service.Volunteer:GetVolunteer"/>
-<Route Url="/volunteer"     Method="POST"   Call="vol.service.Volunteer:UpdateVolunteer"/>
-<Route Url="/volunteer"     Method="PUT"    Call="vol.service.Volunteer:CreateVolunteer"/>
+<Route Url="/volunteer"     Method="PUT"   Call="vol.service.Volunteer:SaveVolunteer"/>
+<!--создание волонтера-->
+<Route Url="/volunteer"     Method="POST"    Call="vol.service.Volunteer:CreateVolunteer"/>
+<!--просмотр одного события-->
 <Route Url="/event/:id"     Method="GET"    Call="vol.service.Event:GetEvent"/>
-<Route Url="/event"         Method="POST"   Call="vol.service.Event:UpdateEvent"/>
-<Route Url="/event"         Method="PUT"    Call="vol.service.Event:CreateEvent"/>
+<!--просмотр всех событий-->
+<Route Url="/event"     Method="GET"    Call="vol.service.Event:GetEvents"/>
+<!--редактирование события-->
+<Route Url="/event"         Method="PUT"   Call="vol.service.Event:UpdateEvent"/>
+<!--создание события-->
+<Route Url="/event"         Method="POST"    Call="vol.service.Event:CreateEvent"/>
+<Route Url="/organization/:id" Method="GET"    Call="vol.service.Organization:GetOrganization"/>
+<Route Url="/organization"     Method="PUT"   Call="vol.service.Organization:UpdateOrganization"/>
+<!--создание орга-->
+<Route Url="/organization"     Method="POST"    Call="vol.service.Organization:CreateOrganization"/>
 <Route Url="/organizer/:id" Method="GET"    Call="vol.service.Organizer:GetOrganizer"/>
-<Route Url="/organizer"     Method="POST"   Call="vol.service.Organizer:UpdateOrganizer"/>
-<Route Url="/organizer"     Method="PUT"    Call="vol.service.Organizer:CreateOrganizer"/>
+<Route Url="/organizer"     Method="PUT"   Call="vol.service.Organizer:UpdateOrganizer"/>
+<!--создание орга-->
+<Route Url="/organizer"     Method="POST"    Call="vol.service.Organizer:CreateOrganizer"/>
+
 </Routes>
 }
 

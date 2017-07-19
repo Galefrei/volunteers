@@ -20,7 +20,7 @@ ClassMethod CreateOrganizer()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание орга
-	    set organizer = ##class(vol.logic.Organizer).Create(data)
+	    do ##class(vol.logic.Organizer).Create(data)
 	    TCOMMIT
 	  	}
 	  	catch (ex) {

@@ -45,6 +45,8 @@ XData UrlMap
 
 <!--создание регистрации на ивент-->
 <Route Url="/regEvent"     Method="POST"    Call="vol.service.RegistrationOnEvent:CreateRegistrationOnEvent"/>
+<Route Url="/regEvent/:id"     Method="DELETE"    Call="vol.service.RegistrationOnEvent:DeleteRegistrationOnEvent"/>
+
 <!--юзерs-->
 <!--просмотр одного юзера-->
 <Route Url="/login" Method="POST"    Call="vol.service.User:LoginUser"/>

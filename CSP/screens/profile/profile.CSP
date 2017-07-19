@@ -4,33 +4,41 @@
   			<div class="panel-heading">
   				<ul class="nav nav-tabs">
   					<li class="active"><a data-toggle="tab" href="#home" target="_blank">Профиль</a></li>
-  					<li>				<a data-toggle="tab" href="#company" target="_blank">Компания</a></li>
+  					<li ng-if="personIsOrganizer()"><a data-toggle="tab" href="#company" target="_blank">Компания</a></li>
 				</ul>
   			</div>
   			<div class="panel-body">
  
   				<h5></h5>
-  				 <div class="tab-content">
-  					<div id="home" class="tab-pane fade in active">
-    					<h3>{{user.name}}</h3>
+  				 <div class="tab-content"> <!--для волонтера -->
+  				 
+  					<div id="home" class="tab-pane fade in active" ng-if="!personIsOrganizer()">
+    					<h3>{{user.volunteer.name}}</h3>
     					<p>	
-    						Город: {{user.city}} 
-    						</br>Дата рождения: {{user.dob}}
-    						</br>Телефон: {{user.phone}}
-    						</br>Почта: {{user.email}}
-    						</br>Навыки: {{user.skills}}       					
+    						Город: {{user.volunteer.city.name}} 
+    						</br>Дата рождения: {{user.volunteer.dob}}
+    						</br>Телефон: {{user.volunteer.phone}}
+    						</br>Почта: {{user.volunteer.email}}
+    						<!--</br>Навыки: {{user.volunteer.skills}}   -->     					
     					</p>
   					</div>
-  	
-  					<div id="company" class="tab-pane fade">
-    					<h3>{{org.name}}</h3>
+  					
+  						<!-- для организатора -->
+  				 	<div id="home" class="tab-pane fade in active" ng-if="personIsOrganizer()">
+    					<h3>{{user.organizer.name}}</h3>
+    					<p>	    					
+    						</br>Телефон: {{user.organizer.phone}}    											
+    					</p>
+  					</div>
+
+  					<div id="company" class="tab-pane fade" >
+    					<h3>{{user.organizer.organization.name}}</h3>
     					<p>
-    						Город: {{org.city}}
-    						</br>Телефон: {{org.phone}}
-    						</br>Описание: {{org.desc}}   
-    						
+    						Город: {{user.organizer.organization.city}}
+    						</br>Телефон: {{user.organizer.organization.phone}}
+    						</br>Описание: {{user.organizer.organization.description}}       						
   				 		</p>
-  				 	</div>
+  				 	</div> 
 				</div> 
 				<div class="col-sm-8" style="padding-left: 0px;"> 
 						
@@ -41,31 +49,4 @@
 		</div>
 	</div>
 </div>    
-					
-  				<!--
-  					<div class="row">
-  						<div class="col-sm-6 col-md-4">
-   							<div class="thumbnail">
-      						<img src="1-80.jpg" alt="...">
-      							<div class="caption">
-        							<h3>{{user1.name}}</h3>
-       									<p>...</p>
-        								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  						</div>
-					</div>
-  				-->
-  				
-  
-
-<!--
-$scope.user = {
-		name: "Name",
-		dob: "1996-10-10",
-		city: "Красноярск",
-		phone: "8-695-654-5454",
-		email: "joohn@maile.com",
-		login: "name",
-		password: "pass"
-	};-->
+				

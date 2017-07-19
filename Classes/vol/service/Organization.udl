@@ -23,7 +23,8 @@ ClassMethod GetOrganizations()
  			set obj.name = organization.Name
  		  	set obj.phone = organization.PhoneOrganization
  		  	set obj.city = {}
- 		    set obj.city.name = city.City  
+ 		    set obj.city.name = city.City
+ 		    set obj.description =  organization.Description 
  		    do array.%Push(obj)  
 		}
 		

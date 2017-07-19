@@ -1,4 +1,4 @@
-mainModule.controller('CreateEventCtrl', function($scope, $http, $location){
+mainModule.controller('CreateEventCtrl', function($scope, $http, $location, broker){
 	$scope.event = {
 		name: "",
 		begin: "",
@@ -7,20 +7,20 @@ mainModule.controller('CreateEventCtrl', function($scope, $http, $location){
 		description: ""
 	};
 
-	$http.get("broker/city").then(
-			function(data){
-				$scope.array = data.data;
-			}, 
-			function(data){
-				alert(data);
-			}
-			);
+	$http.get(broker + "city").then(
+		function(data){
+			$scope.array = data.data;
+		},
+		function(data){
+			alert(data);
+		}
+	);
 
 	$scope.save = function() {
 		$scope.event.organizer = {id: "1"}
 		$scope.event.begin = moment($scope.event.begin).format("YYYY-MM-DD HH:mm:ss");
 		$scope.event.end = moment($scope.event.end).format("YYYY-MM-DD HH:mm:ss");
-		$http.post("broker/event", $scope.event).then(
+		$http.post(broker + "event", $scope.event).then(
 			function(data){
 				alert("OK");
 			}, 

@@ -6,8 +6,8 @@ ClassMethod LoginUser()
 		set st = $$$OK
 		try{
 			$$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data, 1))
-			set un = data.user
-			set pw = data.pass
+			set un = data.login
+			set pw = data.password
 			if un'=""{
 				&sql(select ID into :id from vol_data."User"
 				where Login = :un and Password = :pw)

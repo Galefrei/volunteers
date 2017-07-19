@@ -2,7 +2,6 @@
 
 
 var mainModule = angular.module('mainModule', ['ngRoute']); 
-var regModule = angular.module('regModule', ['ngRoute']); 
 
 mainModule.config(['$routeProvider', function($routeProvider) {
 	

@@ -1,0 +1,5 @@
+Class vol.dal.City Extends %Persistent
+{
+
+}
+

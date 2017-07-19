@@ -1,0 +1,33 @@
+Include Src.Utils.Macro
+
+Class vol.dal.Volunteer Extends %Persistent
+{
+
+ClassMethod Create() As vol.data.Volunteer
+{
+	 set volunteer = ##class(vol.data.Volunteer).%New()
+	 return volunteer
+}
+
+ClassMethod Save(volunteer As vol.data.Volunteer) As vol.data.Volunteer
+{
+	$$$do(volunteer.%Save())
+}
+
+Storage Default
+{
+<Data name="VolunteerDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.dal.VolunteerD</DataLocation>
+<DefaultData>VolunteerDefaultData</DefaultData>
+<IdLocation>^vol.dal.VolunteerD</IdLocation>
+<IndexLocation>^vol.dal.VolunteerI</IndexLocation>
+<StreamLocation>^vol.dal.VolunteerS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

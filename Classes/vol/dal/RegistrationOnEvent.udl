@@ -1,0 +1,33 @@
+Include Src.Utils.Macro
+
+Class vol.dal.RegistrationOnEvent Extends %Persistent
+{
+
+ClassMethod Create() As vol.data.RegistrationOnEvent
+{
+	 set regEvent = ##class(vol.data.RegistrationOnEvent).%New()
+	 return regEvent
+}
+
+ClassMethod Save(regEvent As vol.data.RegistrationOnEvent) As vol.data.RegistrationOnEvent
+{
+	$$$do(regEvent.%Save())
+}
+
+Storage Default
+{
+<Data name="RegistrationOnEventDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.dal.RegistrationOnEventD</DataLocation>
+<DefaultData>RegistrationOnEventDefaultData</DefaultData>
+<IdLocation>^vol.dal.RegistrationOnEventD</IdLocation>
+<IndexLocation>^vol.dal.RegistrationOnEventI</IndexLocation>
+<StreamLocation>^vol.dal.RegistrationOnEventS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

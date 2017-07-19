@@ -1,0 +1,33 @@
+Include Src.Utils.Macro
+
+Class vol.dal.User Extends %Persistent
+{
+
+ClassMethod Create() As vol.data.User
+{
+	 set user = ##class(vol.data.User).%New()
+	 return user
+}
+
+ClassMethod Save(user As vol.data.User) As vol.data.User
+{
+	$$$do(user.%Save())
+}
+
+Storage Default
+{
+<Data name="UserDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.dal.UserD</DataLocation>
+<DefaultData>UserDefaultData</DefaultData>
+<IdLocation>^vol.dal.UserD</IdLocation>
+<IndexLocation>^vol.dal.UserI</IndexLocation>
+<StreamLocation>^vol.dal.UserS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

@@ -1,0 +1,33 @@
+Include Src.Utils.Macro
+
+Class vol.dal.Organizer Extends %Persistent
+{
+
+ClassMethod Create() As vol.data.Organizer
+{
+	 set organizer = ##class(vol.data.Organizer).%New()
+	 return organizer
+}
+
+ClassMethod Save(organizer As vol.data.Organizer) As vol.data.Organizer
+{
+	$$$do(organizer.%Save())
+}
+
+Storage Default
+{
+<Data name="OrganizerDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.dal.OrganizerD</DataLocation>
+<DefaultData>OrganizerDefaultData</DefaultData>
+<IdLocation>^vol.dal.OrganizerD</IdLocation>
+<IndexLocation>^vol.dal.OrganizerI</IndexLocation>
+<StreamLocation>^vol.dal.OrganizerS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

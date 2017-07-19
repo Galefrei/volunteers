@@ -1,0 +1,33 @@
+Include Src.Utils.Macro
+
+Class vol.dal.Event Extends %Persistent
+{
+
+ClassMethod Create() As vol.data.Event
+{
+	 set event = ##class(vol.data.Event).%New()
+	 return event
+}
+
+ClassMethod Save(event As vol.data.Event) As vol.data.Event
+{
+	$$$do(event.%Save())
+}
+
+Storage Default
+{
+<Data name="EventDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.dal.EventD</DataLocation>
+<DefaultData>EventDefaultData</DefaultData>
+<IdLocation>^vol.dal.EventD</IdLocation>
+<IndexLocation>^vol.dal.EventI</IndexLocation>
+<StreamLocation>^vol.dal.EventS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

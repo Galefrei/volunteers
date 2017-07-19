@@ -1,0 +1,33 @@
+Include Src.Utils.Macro
+
+Class vol.dal.Organization Extends %Persistent
+{
+
+ClassMethod Create() As vol.data.Organization
+{
+	 set organization = ##class(vol.data.Organization).%New()
+	 return organization
+}
+
+ClassMethod Save(organization As vol.data.Organization) As vol.data.Organization
+{
+	$$$do(organization.%Save())
+}
+
+Storage Default
+{
+<Data name="OrganizationDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.dal.OrganizationD</DataLocation>
+<DefaultData>OrganizationDefaultData</DefaultData>
+<IdLocation>^vol.dal.OrganizationD</IdLocation>
+<IndexLocation>^vol.dal.OrganizationI</IndexLocation>
+<StreamLocation>^vol.dal.OrganizationS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

@@ -1,0 +1,35 @@
+Class vol.logic.Organization Extends %Persistent
+{
+
+ClassMethod Create(obj As %DynamicObject)
+{
+	set organization = ##class(vol.dal.Organization).Create()
+	do ..Transform(obj, .organization)
+	do ##class(vol.dal.Organization).Save(organization)
+}
+
+ClassMethod Transform(obj As %DynamicObject, ByRef organization As vol.data.Organization)
+{
+		set organization.Name = $ZCONVERT(data.name, "I", "UTF8")
+	    set organization.PhoneOrganization = $ZCONVERT(data.phone, "I", "UTF8")
+		set organization.CityOrganization = ##class(vol.data.City).%OpenId(data.city.id)
+		set organization.Description = $ZCONVERT(data.description, "I", "UTF8")
+}
+
+Storage Default
+{
+<Data name="OrganizationDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.logic.OrganizationD</DataLocation>
+<DefaultData>OrganizationDefaultData</DefaultData>
+<IdLocation>^vol.logic.OrganizationD</IdLocation>
+<IndexLocation>^vol.logic.OrganizationI</IndexLocation>
+<StreamLocation>^vol.logic.OrganizationS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

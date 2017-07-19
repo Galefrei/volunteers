@@ -1,0 +1,16 @@
+Class vol.logic.User Extends %Persistent
+{
+
+ClassMethod Create(obj As %DynamicObject)
+{
+	set user = ##class(vol.dal.User).Create()
+}
+
+ClassMethod Transform(obj As %DynamicObject, ByRef user As vol.data.User)
+{
+		set user.Login = $ZCONVERT(data.login, "I", "UTF8")
+		set user.Password = $ZCONVERT(data.password, "I", "UTF8")
+}
+
+}
+

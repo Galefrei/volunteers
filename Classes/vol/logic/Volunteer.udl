@@ -1,0 +1,41 @@
+Class vol.logic.Volunteer Extends %Persistent
+{
+
+ClassMethod Create(obj As %DynamicObject)
+{
+	set volunteer = ##class(vol.dal.Volunteer).Create()
+	do ..Transform(obj, .volunteer)
+	do ##class(vol.dal.Volunteer).Save(volunteer)
+	set user = ##class(vol.logic.User).Create()
+	do ##class(vol.dal.User).Transform(obj, .user)
+	set user.Volunteer = volunteer
+	do ##class(vol.dal.User).Save(user)
+}
+
+ClassMethod Transform(obj As %DynamicObject, ByRef volunteer As vol.data.Volunteer)
+{
+		set volunteer.Name = $ZCONVERT(data.name, "I", "UTF8")
+	    set volunteer.DOB = $ZCONVERT(data.dob, "I", "UTF8")
+	    set volunteer.PhoneVolunteer = $ZCONVERT(data.phone, "I", "UTF8")
+	    set volunteer.Email = $ZCONVERT(data.email, "I", "UTF8")
+		set volunteer.CityVolunteer = ##class(vol.data.City).%OpenId(data.city.id)
+		//	set volunteer.SkillVolunteer = $ZCONVERT(data.skill, "I", "UTF8")
+}
+
+Storage Default
+{
+<Data name="VolunteerDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.logic.VolunteerD</DataLocation>
+<DefaultData>VolunteerDefaultData</DefaultData>
+<IdLocation>^vol.logic.VolunteerD</IdLocation>
+<IndexLocation>^vol.logic.VolunteerI</IndexLocation>
+<StreamLocation>^vol.logic.VolunteerS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

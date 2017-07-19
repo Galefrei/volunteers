@@ -1,0 +1,31 @@
+Class vol.logic.RegistrationOnEvent Extends %Persistent
+{
+
+ClassMethod Create(obj As %DynamicObject)
+{
+	set regEvent = ##class(vol.dal.RegistrationOnEvent).Create()
+}
+
+ClassMethod Transform(obj As %DynamicObject, ByRef regEvent As vol.data.RegistrationOnEvent)
+{
+		  set regEvent.Event = ##class(vol.data.Event).%OpenId(data.event.id)
+	  	set regEvent.Volunteer = ##class(vol.data.Volunteer).%OpenId(data.volunteer.id)
+}
+
+Storage Default
+{
+<Data name="RegistrationOnEventDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.logic.RegistrationOnEventD</DataLocation>
+<DefaultData>RegistrationOnEventDefaultData</DefaultData>
+<IdLocation>^vol.logic.RegistrationOnEventD</IdLocation>
+<IndexLocation>^vol.logic.RegistrationOnEventI</IndexLocation>
+<StreamLocation>^vol.logic.RegistrationOnEventS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

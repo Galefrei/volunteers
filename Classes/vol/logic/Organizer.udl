@@ -14,9 +14,9 @@ ClassMethod Create(obj As %DynamicObject)
 
 ClassMethod Transform(obj As %DynamicObject, ByRef organizer As vol.data.Organizer)
 {
-		set organizer.Name = $ZCONVERT(data.name, "I", "UTF8")
-	    set organizer.PhoneOrganizer = $ZCONVERT(data.phone, "I", "UTF8")
-		set organizer.Organization = ##class(vol.data.Organization).%OpenId(data.organization.id)
+		set organizer.Name = $ZCONVERT(obj.name, "I", "UTF8")
+	    set organizer.PhoneOrganizer = $ZCONVERT(obj.phone, "I", "UTF8")
+		set organizer.Organization = ##class(vol.data.Organization).%OpenId(obj.organization.id)
 }
 
 Storage Default

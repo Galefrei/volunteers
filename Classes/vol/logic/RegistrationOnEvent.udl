@@ -8,8 +8,8 @@ ClassMethod Create(obj As %DynamicObject)
 
 ClassMethod Transform(obj As %DynamicObject, ByRef regEvent As vol.data.RegistrationOnEvent)
 {
-		  set regEvent.Event = ##class(vol.data.Event).%OpenId(data.event.id)
-	  	set regEvent.Volunteer = ##class(vol.data.Volunteer).%OpenId(data.volunteer.id)
+		  set regEvent.Event = ##class(vol.data.Event).%OpenId(obj.event.id)
+	  	set regEvent.Volunteer = ##class(vol.data.Volunteer).%OpenId(obj.volunteer.id)
 }
 
 Storage Default

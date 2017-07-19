@@ -10,10 +10,10 @@ ClassMethod Create(obj As %DynamicObject)
 
 ClassMethod Transform(obj As %DynamicObject, ByRef organization As vol.data.Organization)
 {
-		set organization.Name = $ZCONVERT(data.name, "I", "UTF8")
-	    set organization.PhoneOrganization = $ZCONVERT(data.phone, "I", "UTF8")
-		set organization.CityOrganization = ##class(vol.data.City).%OpenId(data.city.id)
-		set organization.Description = $ZCONVERT(data.description, "I", "UTF8")
+		set organization.Name = $ZCONVERT(obj.name, "I", "UTF8")
+	    set organization.PhoneOrganization = $ZCONVERT(obj.phone, "I", "UTF8")
+		set organization.CityOrganization = ##class(vol.data.City).%OpenId(obj.city.id)
+		set organization.Description = $ZCONVERT(obj.description, "I", "UTF8")
 }
 
 Storage Default

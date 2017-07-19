@@ -8,8 +8,23 @@ ClassMethod Create(obj As %DynamicObject)
 
 ClassMethod Transform(obj As %DynamicObject, ByRef user As vol.data.User)
 {
-		set user.Login = $ZCONVERT(data.login, "I", "UTF8")
-		set user.Password = $ZCONVERT(data.password, "I", "UTF8")
+		set user.Login = $ZCONVERT(obj.login, "I", "UTF8")
+		set user.Password = $ZCONVERT(obj.password, "I", "UTF8")
+}
+
+Storage Default
+{
+<Data name="UserDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.logic.UserD</DataLocation>
+<DefaultData>UserDefaultData</DefaultData>
+<IdLocation>^vol.logic.UserD</IdLocation>
+<IndexLocation>^vol.logic.UserI</IndexLocation>
+<StreamLocation>^vol.logic.UserS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
 }
 
 }

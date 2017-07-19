@@ -6,30 +6,50 @@ Parameter HandleCorsRequest = 1;
 XData UrlMap
 {
 <Routes>
+<!--волонтеры-->
+<!--просмотр одного волонтера-->
 <Route Url="/volunteer/:id" Method="GET"    Call="vol.service.Volunteer:GetVolunteer"/>
-<Route Url="/volunteer"     Method="PUT"   Call="vol.service.Volunteer:SaveVolunteer"/>
+<!--редактирование волонтера-->
+<Route Url="/volunteer"     Method="PUT"   Call="vol.service.Volunteer:UpdateVolunteer"/>
 <!--создание волонтера-->
 <Route Url="/volunteer"     Method="POST"    Call="vol.service.Volunteer:CreateVolunteer"/>
 <!--просмотр одного события-->
 <Route Url="/event/:id"     Method="GET"    Call="vol.service.Event:GetEvent"/>
+
+<!--события-->
 <!--просмотр всех событий-->
-<Route Url="/event"     Method="GET"    Call="vol.service.Event:GetEvents"/>
+<Route Url="/events"     Method="GET"    Call="vol.service.Event:GetEvents"/>
 <!--редактирование события-->
 <Route Url="/event"         Method="PUT"   Call="vol.service.Event:UpdateEvent"/>
 <!--создание события-->
 <Route Url="/event"         Method="POST"    Call="vol.service.Event:CreateEvent"/>
+<!--организации-->
+<!--просмотр всех организаций -->
+<Route Url="/organization" Method="GET"    Call="vol.service.Organization:GetOrganizations"/>
+<!--просмотр одной организации -->
 <Route Url="/organization/:id" Method="GET"    Call="vol.service.Organization:GetOrganization"/>
+<!--редактирование организации-->
 <Route Url="/organization"     Method="PUT"   Call="vol.service.Organization:UpdateOrganization"/>
+<!--организаторы-->
 <!--создание орга-->
 <Route Url="/organization"     Method="POST"    Call="vol.service.Organization:CreateOrganization"/>
+<!--просмотр одного организатора-->
 <Route Url="/organizer/:id" Method="GET"    Call="vol.service.Organizer:GetOrganizer"/>
+<!--редактирование организатора-->
 <Route Url="/organizer"     Method="PUT"   Call="vol.service.Organizer:UpdateOrganizer"/>
 <!--создание орга-->
 <Route Url="/organizer"     Method="POST"    Call="vol.service.Organizer:CreateOrganizer"/>
-<Route Url="/city" Method="GET"    Call="vol.service.City:GetCites"/>
-<!--создание регистрации на ивент-->
 
+<!--просмотр всех городов-->
+<Route Url="/city" Method="GET"    Call="vol.service.City:GetCites"/>
+
+<!--создание регистрации на ивент-->
 <Route Url="/regEvent"     Method="POST"    Call="vol.service.RegistrationOnEvent:CreateRegistrationOnEvent"/>
+<!--юзерs-->
+<!--просмотр одного юзера-->
+<Route Url="/login" Method="POST"    Call="vol.service.User:LoginUser"/>
+<!--просмотр всех юзеров-->
+<Route Url="/user" Method="GET"    Call="vol.service.User:GetUsers"/>
 
 
 </Routes>

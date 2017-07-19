@@ -13,7 +13,7 @@ XData UrlMap
 <!--просмотр одного события-->
 <Route Url="/event/:id"     Method="GET"    Call="vol.service.Event:GetEvent"/>
 <!--просмотр всех событий-->
-<Route Url="/event"     Method="GET"    Call="vol.service.Event:GetEvents"/>
+<Route Url="/events"     Method="GET"    Call="vol.service.Event:GetEvents"/>
 <!--редактирование события-->
 <Route Url="/event"         Method="PUT"   Call="vol.service.Event:UpdateEvent"/>
 <!--создание события-->
@@ -28,7 +28,6 @@ XData UrlMap
 <Route Url="/organizer"     Method="POST"    Call="vol.service.Organizer:CreateOrganizer"/>
 <Route Url="/city" Method="GET"    Call="vol.service.City:GetCites"/>
 <!--создание регистрации на ивент-->
-
 <Route Url="/regEvent"     Method="POST"    Call="vol.service.RegistrationOnEvent:CreateRegistrationOnEvent"/>
 
 

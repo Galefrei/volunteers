@@ -1,9 +1,11 @@
-mainModule.controller('MainCtrl', function($scope){
+mainModule.controller('MainCtrl', function($scope, $http){
 	
 	/*$scope.array = [
 		{name: "name1", description: "desc12321"},
 		{name: "name2mgkgh", description: "desc32423423"}
 	];*/
+	
+	/*
 	$scope.event=[{
 		name: "name",
 		begin: "11.11.17",
@@ -20,5 +22,16 @@ mainModule.controller('MainCtrl', function($scope){
 		organization: "организация",
 		description: "Описание — композиционная форма, которую используют в литературоведении и лингвистике для подробной характеристики предметов или явлений в целях создания художественного образа. Эту композиционную форму разделяют на описание предметов, описание процессов, описание пережитого или описание жизни и характеристик человека."
 		}];
+		*/
+		
+		$http.get("broker/events").then(
+			function(data) {
+			
+				$scope.event = data.data;
+				console.log($scope.event);
+			},
+			function(data) {
+				alert(data);
+			})
 	
 });

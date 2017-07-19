@@ -1,4 +1,4 @@
-mainModule.controller('MainCtrl', function($scope, $http){
+mainModule.controller('MainCtrl', function($scope, $http, broker){
 
 	$http.get(broker + "events").then(
 		function(data) {

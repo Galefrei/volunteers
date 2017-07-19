@@ -84,7 +84,7 @@ ClassMethod CreateEvent()
 	    //создание ивента
 	    
 	    
-	    set event = ##class(vol.logic.Event).Create(data)
+	    do ##class(vol.logic.Event).Create(data)
 	    TCOMMIT
 	  	}
 	  	catch (ex) {

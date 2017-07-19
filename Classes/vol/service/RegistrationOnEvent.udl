@@ -11,11 +11,7 @@ ClassMethod CreateRegistrationOnEvent()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    
-	    set regEvent = ##class(vol.data.RegistrationOnEvent).%New()
-	    set regEvent.Event = ##class(vol.data.Event).%OpenId(data.event.id)
-	  	set regEvent.Volunteer = ##class(vol.data.Volunteer).%OpenId(data.volunteer.id)
-		   
-		$$$do(regEvent.%Save())
+	     set regEvent = ##class(vol.logic.RegistrationOnEvent).Create(data)
 	    TCOMMIT
 	  	}
 	  	catch (ex) {

@@ -20,16 +20,9 @@ ClassMethod CreateOrganization()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание орга
-	    set organization = ##class(vol.data.Organization).%New()
-	    set organization.Name = $ZCONVERT(data.name, "I", "UTF8")
-	    set organization.PhoneOrganization = $ZCONVERT(data.phone, "I", "UTF8")
-		set organization.CityOrganization = ##class(vol.data.City).%OpenId(data.city.id)
-		set organization.Description = $ZCONVERT(data.description, "I", "UTF8")
-	
-		
-
-		$$$do(organization.%Save())
-	    TCOMMIT
+	    
+	    set organization = ##class(vol.logic.Organization).Create(data)
+		TCOMMIT
 	  	}
 	  	catch (ex) {
 		  	TROLLBACK

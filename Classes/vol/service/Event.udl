@@ -80,15 +80,9 @@ ClassMethod CreateEvent()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание ивента
-	    set event = ##class(vol.data.Event).%New()
-	    set event.Name = $ZCONVERT(data.name, "I", "UTF8")
-	  	set event.BeginDate = $ZCONVERT(data.begin, "I", "UTF8")
-	  	set event.EndDate = $ZCONVERT(data.end, "I", "UTF8")
-	  	set event.DescriptionEvent = $ZCONVERT(data.description, "I", "UTF8") 
-	   	set event.CityEvent = ##class(vol.data.City).%OpenId(data.city.id)
-	   	set event.OrganizerEvent = ##class(vol.data.Organizer).%OpenId(data.organizer.id)
-		set event.OrganizationEvent = event.OrganizerEvent.Organization
-		$$$do(event.%Save())
+	    
+	    
+	    set event = ##class(vol.logic.Event).Create(data)
 	    TCOMMIT
 	  	}
 	  	catch (ex) {

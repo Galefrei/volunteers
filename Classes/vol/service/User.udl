@@ -1,0 +1,66 @@
+Class vol.service.User Extends %Persistent
+{
+
+ClassMethod GetUser()
+{
+		set st = $$$OK
+		try{
+			$$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data, 1))
+			set un = data.us
+			set pw = data.pass
+			if un'=""{
+				&sql(select ID into :id from vol_data."User"
+				where Login = :un and Password = :pw)
+				if id '=""{
+					set obj = {}
+		 			set us = ##class(vol.data.User).%OpenId(id)
+		 			set obj.login = us.Login
+		 			set obj.password = us.Password
+		 			if user.Volunteer'=""
+		 			{
+			 			set obj.volunteer = {}
+			 			set obj.volunteer.name = user.Volunteer.Name
+			 			set obj.volunteer.dob = user.Volunteer.DOB
+			 			set obj.volunteer.phone = user.Volunteer.PhoneVolunteer
+			 			set obj.volunteer.email = user.Volunteer.Email
+			 			set obj.volunteer.city = user.Volunteer.CityVolunteer
+			 		}
+		 			else
+		 			{
+			 			set obj.organizer = {}
+			 			set obj.organizer.name = user.Organizer.Name
+			 			set obj.organizer.phone = user.Organizer.PhoneOrganizer
+			 			set obj.organizer.organization = {}
+			 			set obj.organizer.organization.name = user.Organizer.Organization.Name
+			 			set obj.organizer.organization.phone = user.Organizer.Organization.PhoneOrganization
+			 			set obj.organizer.organization.city = user.Organizer.Organization.CityOrganization
+			 			set obj.organizer.organization.description = user.Organizer.Organization.Description
+			 		}
+			 		
+			 		write obj.%ToJSON()
+				}
+			}
+		}
+		catch (ex) {
+		set st = ex.AsStatus()
+		}	
+		quit st
+}
+
+Storage Default
+{
+<Data name="UserDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+</Data>
+<DataLocation>^vol.service.UserD</DataLocation>
+<DefaultData>UserDefaultData</DefaultData>
+<IdLocation>^vol.service.UserD</IdLocation>
+<IndexLocation>^vol.service.UserI</IndexLocation>
+<StreamLocation>^vol.service.UserS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}
+

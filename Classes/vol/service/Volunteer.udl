@@ -16,19 +16,7 @@ ClassMethod CreateVolunteer()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание
-	    set volunteer = ##class(vol.data.Volunteer).%New()
-	    set volunteer.Name = $ZCONVERT(data.name, "I", "UTF8")
-	    set volunteer.DOB = $ZCONVERT(data.dob, "I", "UTF8")
-	    set volunteer.PhoneVolunteer = $ZCONVERT(data.phone, "I", "UTF8")
-	    set volunteer.Email = $ZCONVERT(data.email, "I", "UTF8")
-		set volunteer.CityVolunteer = ##class(vol.data.City).%OpenId(data.city.id)
-		//	set volunteer.SkillVolunteer = $ZCONVERT(data.skill, "I", "UTF8")
-		$$$do(volunteer.%Save())
-		set user = ##class(vol.data.User).%New()
-		set user.Login = $ZCONVERT(data.login, "I", "UTF8")
-		set user.Password = $ZCONVERT(data.password, "I", "UTF8")
-		set user.Volunteer = volunteer
-		$$$do(user.%Save())
+	    set volunteer = ##class(vol.logic.Volunteer).Create(data)
 	    TCOMMIT
 	  	}
 	  	catch (ex) {
@@ -38,7 +26,7 @@ ClassMethod CreateVolunteer()
     return st
 }
 
-ClassMethod SaveVolunteer()
+ClassMethod UpdateVolunteer()
 {
     quit $$$OK
 }

@@ -7,7 +7,7 @@ ClassMethod Create(obj As %DynamicObject)
 	do ..Transform(obj, .volunteer)
 	do ##class(vol.dal.Volunteer).Save(volunteer)
 	set user = ##class(vol.logic.User).Create()
-	do ##class(vol.dal.User).Transform(obj, .user)
+	do ##class(vol.logic.User).Transform(obj, .user)
 	set user.Volunteer = volunteer
 	do ##class(vol.dal.User).Save(user)
 }

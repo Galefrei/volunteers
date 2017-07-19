@@ -16,7 +16,7 @@ ClassMethod CreateVolunteer()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание
-	    set volunteer = ##class(vol.logic.Volunteer).Create(data)
+	    do ##class(vol.logic.Volunteer).Create(data)
 	    TCOMMIT
 	  	}
 	  	catch (ex) {

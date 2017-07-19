@@ -1,9 +1,10 @@
 Class vol.logic.User Extends %Persistent
 {
 
-ClassMethod Create(obj As %DynamicObject)
+ClassMethod Create(obj As %DynamicObject) As vol.data.User
 {
 	set user = ##class(vol.dal.User).Create()
+	return user
 }
 
 ClassMethod Transform(obj As %DynamicObject, ByRef user As vol.data.User)

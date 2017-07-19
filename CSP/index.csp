@@ -28,7 +28,9 @@
     
     <script language="javascript" src="screens/main/MainCtrl.js"></script>
     <script language="javascript" src="screens/registration/RegCtrl.js"></script>
+    <script language="javascript" src="screens/event/EventCtrl.js"></script>
     <script language="javascript" src="directives/header/header.js"></script>
+    <script language="javascript" src="screens/profile/ProfCtrl.js"></script>
     
   </body>
 </html>

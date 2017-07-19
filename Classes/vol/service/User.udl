@@ -1,40 +1,44 @@
 Class vol.service.User Extends %Persistent
 {
 
-ClassMethod GetUser()
+ClassMethod LoginUser()
 {
 		set st = $$$OK
 		try{
 			$$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data, 1))
-			set un = data.us
+			set un = data.user
 			set pw = data.pass
 			if un'=""{
 				&sql(select ID into :id from vol_data."User"
 				where Login = :un and Password = :pw)
 				if id '=""{
 					set obj = {}
-		 			set us = ##class(vol.data.User).%OpenId(id)
-		 			set obj.login = us.Login
-		 			set obj.password = us.Password
+		 			set user = ##class(vol.data.User).%OpenId(id)
+		 			set obj.login = user.Login
+		 			set obj.password = user.Password
 		 			if user.Volunteer'=""
 		 			{
-			 			set obj.volunteer = {}
-			 			set obj.volunteer.name = user.Volunteer.Name
-			 			set obj.volunteer.dob = user.Volunteer.DOB
-			 			set obj.volunteer.phone = user.Volunteer.PhoneVolunteer
-			 			set obj.volunteer.email = user.Volunteer.Email
-			 			set obj.volunteer.city = user.Volunteer.CityVolunteer
+			 			set city = user.Volunteer.CityVolunteer
+			 		set obj.volunteer = {}
+			 		set obj.volunteer.name = user.Volunteer.Name
+			 		set obj.volunteer.dob = user.Volunteer.DOB
+			 		set obj.volunteer.phone = user.Volunteer.PhoneVolunteer
+			 		set obj.volunteer.email = user.Volunteer.Email
+			 		set obj.volunteer.city = {}
+ 		    		set obj.volunteer.city.name = city.City  
 			 		}
 		 			else
 		 			{
-			 			set obj.organizer = {}
-			 			set obj.organizer.name = user.Organizer.Name
-			 			set obj.organizer.phone = user.Organizer.PhoneOrganizer
-			 			set obj.organizer.organization = {}
-			 			set obj.organizer.organization.name = user.Organizer.Organization.Name
-			 			set obj.organizer.organization.phone = user.Organizer.Organization.PhoneOrganization
-			 			set obj.organizer.organization.city = user.Organizer.Organization.CityOrganization
-			 			set obj.organizer.organization.description = user.Organizer.Organization.Description
+			 			set city = user.Organizer.Organization.CityOrganization
+			 		set obj.organizer = {}
+			 		set obj.organizer.name = user.Organizer.Name
+			 		set obj.organizer.phone = user.Organizer.PhoneOrganizer
+			 		set obj.organizer.organization = {}
+			 		set obj.organizer.organization.name = user.Organizer.Organization.Name
+			 		set obj.organizer.organization.phone = user.Organizer.Organization.PhoneOrganization
+			 		set obj.organizer.organization.city = {}
+ 		    		set obj.organizer.organization.city.name = city.City  
+			 		set obj.organizer.organization.description = user.Organizer.Organization.Description			 		
 			 		}
 			 		
 			 		write obj.%ToJSON()
@@ -45,6 +49,60 @@ ClassMethod GetUser()
 		set st = ex.AsStatus()
 		}	
 		quit st
+}
+
+ClassMethod GetUsers()
+{
+	set st = $$$OK
+	try{
+	    set array = []
+	    &sql(DECLARE StCur CURSOR FOR 
+		 	 SELECT ID
+		 	 FROM vol_data."User")
+		&sql(OPEN StCur)
+		for  
+		{	
+			&sql(FETCH StCur INTO :id) 
+			quit:(SQLCODE '= 0)
+ 			set user = ##class(vol.data.User).%OpenId(id)
+ 			set obj = {}
+  			set obj.login = user.Login
+		 	set obj.password = user.Password
+		 		if user.Volunteer'=""
+		 		{
+			 		set city = user.Volunteer.CityVolunteer
+			 		set obj.volunteer = {}
+			 		set obj.volunteer.name = user.Volunteer.Name
+			 		set obj.volunteer.dob = user.Volunteer.DOB
+			 		set obj.volunteer.phone = user.Volunteer.PhoneVolunteer
+			 		set obj.volunteer.email = user.Volunteer.Email
+			 		set obj.volunteer.city = {}
+ 		    		set obj.volunteer.city.name = city.City  
+			 	}
+		 		else
+		 		{
+			 		set city = user.Organizer.Organization.CityOrganization
+			 		set obj.organizer = {}
+			 		set obj.organizer.name = user.Organizer.Name
+			 		set obj.organizer.phone = user.Organizer.PhoneOrganizer
+			 		set obj.organizer.organization = {}
+			 		set obj.organizer.organization.name = user.Organizer.Organization.Name
+			 		set obj.organizer.organization.phone = user.Organizer.Organization.PhoneOrganization
+			 		set obj.organizer.organization.city = {}
+ 		    		set obj.organizer.organization.city.name = city.City  
+			 		set obj.organizer.organization.description = user.Organizer.Organization.Description
+			 	}
+ 		  	do array.%Push(obj)  
+		}
+		
+		&sql(CLOSE StCur)
+		write array.%ToJSON()	    
+	    }
+	   catch (ex){
+		set st = ex.AsStatus()
+	}
+	
+	return st
 }
 
 Storage Default

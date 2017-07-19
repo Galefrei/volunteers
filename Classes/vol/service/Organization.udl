@@ -3,9 +3,38 @@ Include Src.Utils.Macro
 Class vol.service.Organization
 {
 
-ClassMethod GetOrganization(id As %String)
+ClassMethod GetOrganizations()
 {
-    quit $$$OK
+     set st = $$$OK
+        try{
+	    set array = []
+	    &sql(DECLARE StCur CURSOR FOR 
+		 	 SELECT ID
+		 	 FROM vol_data.Organization)
+		&sql(OPEN StCur)
+		for  
+		{	
+			&sql(FETCH StCur INTO :id) 
+			quit:(SQLCODE '= 0)
+ 			set organization = ##class(vol.data.Organization).%OpenId(id)
+ 			set city = organization.CityOrganization
+  			set obj = {}
+  			set obj.id = organization.%Id()
+ 			set obj.name = organization.Name
+ 		  	set obj.phone = organization.PhoneOrganization
+ 		  	set obj.city = {}
+ 		    set obj.city.name = city.City  
+ 		    do array.%Push(obj)  
+		}
+		
+		&sql(CLOSE StCur)
+		write array.%ToJSON()	    
+	    }
+	   catch (ex){
+		set st = ex.AsStatus()
+	}
+	
+	return st
 }
 
 ClassMethod UpdateOrganization()

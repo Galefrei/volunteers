@@ -18,7 +18,7 @@ XData UrlMap
 
 <!--события-->
 <!--просмотр всех событий-->
-<Route Url="/event"     Method="GET"    Call="vol.service.Event:GetEvents"/>
+<Route Url="/events"     Method="GET"    Call="vol.service.Event:GetEvents"/>
 <!--редактирование события-->
 <Route Url="/event"         Method="PUT"   Call="vol.service.Event:UpdateEvent"/>
 <!--создание события-->

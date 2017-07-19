@@ -8,12 +8,13 @@ ClassMethod GetEvent(id As %String)
        set st = $$$OK
        try{
 	    set event = ##class(vol.data.Event).%OpenId(id)
+	    set city = event.CityEvent
   		set obj = {}
  		set obj.name = event.Name
  		set obj.begin = event.BeginDate 
 	  	set obj.end = event.EndDate 
 	  	set obj.city = {}
-	  	set obj.city.name = event.CityEvent.City
+	  	set obj.city.name = city.City
 	   	set obj.organizer = {}
 	  	set obj.organizer.name = event.OrganizerEvent.Name
 	  	set obj.organizer.phone = event.OrganizerEvent.PhoneOrganizer
@@ -44,13 +45,14 @@ ClassMethod GetEvents()
 			&sql(FETCH StCur INTO :id) 
 			quit:(SQLCODE '= 0)
  			set event = ##class(vol.data.Event).%OpenId(id)
+ 			set city = event.CityEvent
   			set obj = {}
   			set obj.id = event.%Id()
  			set obj.name = event.Name
  		  	set obj.begin = event.BeginDate 
 	  		set obj.end = event.EndDate 
 	  		set obj.city = {}
-	  		set obj.city.name = event.CityEvent.City
+	   		set obj.city.name = city.City
 	  		set obj.description = event.DescriptionEvent
 	  		set obj.organization = {}
 	  		set obj.organization.name = event.OrganizerEvent.Organization.Name

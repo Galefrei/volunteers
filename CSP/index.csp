@@ -33,6 +33,8 @@
     <script language="javascript" src="screens/event/EventCtrl.js"></script>
     <script language="javascript" src="directives/header/header.js"></script>
     <script language="javascript" src="screens/profile/ProfCtrl.js"></script>
+    <script language="javascript" src="screens/admin/AdminCtrl.js"></script>
+    <script language="javascript" src="screens/createorganization/CreateOrganizationCtrl.js"></script>
     
   </body>
 </html>

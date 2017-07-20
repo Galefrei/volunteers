@@ -1,4 +1,4 @@
-mainModule.controller('EventCtrl', function($scope, $http, $routeParams, $location, broker){
+mainModule.controller('EventCtrl', function($scope, $http, $routeParams, $location, broker, authorization){
 
 	console.log($routeParams.id);
 
@@ -15,5 +15,22 @@ mainModule.controller('EventCtrl', function($scope, $http, $routeParams, $locati
 			})
 			
 			$scope.cancel = function() {$location.url('/main')}
+			
+			
+			
+			$scope.registrationOnEvent = function()
+			{
+				$http.post("broker/regEvent", {event: {id: $scope.event.id}, volunteer: {id: authorization.user.volunteer.id}}).then(
+				function(data){
+					//alert("OK");
+					console.log($scope.event.id);
+					console.log(authorization.user.volunteer.id);
+				}, 
+				function(data){
+					alert(data);
+			}
+		);	
+			};
+
 	
 });

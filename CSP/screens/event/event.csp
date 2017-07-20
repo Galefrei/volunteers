@@ -26,7 +26,7 @@
   					Телефон: {{event.organizer.organization.phone}}
   				</div>
     				<div class="col-sm-8" style="padding-left: 0px;">
-      					<button type="submit" class="btn btn-default" ng-click="">Записаться</button>
+      					<button type="submit" class="btn btn-default" ng-click="registrationOnEvent()">Записаться</button>
       					<button type="cancel" class="btn btn-default" ng-click="cancel()">Отмена</button>
     				</div>
   		

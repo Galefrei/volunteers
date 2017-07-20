@@ -34,7 +34,7 @@
   					<div id="company" class="tab-pane fade" >
     					<h3>{{user.organizer.organization.name}}</h3>
     					<p>
-    						Город: {{user.organizer.organization.city}}
+    						Город: {{user.organizer.organization.city.name}}
     						</br>Телефон: {{user.organizer.organization.phone}}
     						</br>Описание: {{user.organizer.organization.description}}       						
   				 		</p>

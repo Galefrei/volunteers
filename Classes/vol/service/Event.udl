@@ -10,6 +10,7 @@ ClassMethod GetEvent(id As %String)
 	    set event = ##class(vol.data.Event).%OpenId(id)
 	    set city = event.CityEvent
   		set obj = {}
+  		set obj.id = event.%Id()
  		set obj.name = event.Name
  		set obj.begin = event.BeginDate 
 	  	set obj.end = event.EndDate 

@@ -28,9 +28,22 @@ mainModule.controller('EventCtrl', function($scope, $http, $routeParams, $locati
 				}, 
 				function(data){
 					alert(data);
-			}
-		);	
+				});
 			};
+		
+	
+			/*$scope.deleteRegistrationOnEvent() = function()
+			{
+				$http.delete("broker/regEvent/:id", "").then(
+				function(data){
+					//alert("OK");
+					console.log($scope.event.id);
+					console.log(authorization.user.volunteer.id);
+				}, 
+				function(data){
+					alert(data);
+				});
+			}*/
 
 	
 });

@@ -27,7 +27,7 @@ mainModule.directive('header', function(){
 			};
 
 			$scope.isOrganizer = function() {
-				return (authorization.user.organizer == null || authorization.user.organizer == undefined);
+				return (authorization.user.organizer != null && authorization.user.organizer != undefined);
 			};
 		}
 	};

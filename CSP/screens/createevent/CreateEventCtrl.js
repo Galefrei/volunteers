@@ -1,4 +1,4 @@
-mainModule.controller('CreateEventCtrl', function($scope, $http, $location, broker){
+mainModule.controller('CreateEventCtrl', function($scope, $http, $location, broker, authorization){
 	$scope.event = {
 		name: "",
 		begin: "",
@@ -17,7 +17,7 @@ mainModule.controller('CreateEventCtrl', function($scope, $http, $location, brok
 	);
 
 	$scope.save = function() {
-		$scope.event.organizer = {id: "1"}
+		$scope.event.organizer = authorization.user.organizer;
 		$scope.event.begin = moment($scope.event.begin).format("YYYY-MM-DD HH:mm:ss");
 		$scope.event.end = moment($scope.event.end).format("YYYY-MM-DD HH:mm:ss");
 		$http.post(broker + "event", $scope.event).then(

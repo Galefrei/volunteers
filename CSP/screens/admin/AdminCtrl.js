@@ -16,5 +16,11 @@ mainModule.controller('AdminCtrl', function($scope, $http, $location){
 				alert(data);
 			}
 			);
+	
+	$scope.userObject=function(user) { 
+			if(user.volunteer)
+			return user.volunteer;
+			else return user.organizer;
+	}
 
 });

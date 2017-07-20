@@ -5,17 +5,29 @@ mainModule.directive('header', function(){
 		controller: function($scope, $http, authorization, broker) {
 			$scope.user = {};
 
+			$scope.isEnter = function() {
+				return authorization.user != "";
+			};
+
+			$scope.userObject = function() {
+				return authorization.user.volunteer ? authorization.user.volunteer : authorization.user.organizer;
+			};
+
 			$scope.login = function()
 			{
 				$http.post(broker + "login", $scope.user).then(
 					function(data) {
 						authorization.user=data.data;
-						console.log(authorization.user);
+						$scope.user = authorization.user;
 					},
 					function(data){
 						alert(data);
 					}
 				);
+			};
+
+			$scope.isOrganizer = function() {
+				return (authorization.user.organizer == null || authorization.user.organizer == undefined);
 			};
 		}
 	};

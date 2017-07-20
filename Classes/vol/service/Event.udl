@@ -39,7 +39,7 @@ ClassMethod GetEvents()
 	    set array = []
 	    &sql(DECLARE StCur CURSOR FOR 
 		 	 SELECT ID
-		 	 FROM vol_data.Event)
+		 	 FROM vol_data.Event ORDER BY ID DESC)
 		&sql(OPEN StCur)
 		for  
 		{	

@@ -11,7 +11,8 @@ ClassMethod LoginUser()
 			if un'=""{
 				&sql(select ID into :id from vol_data."User"
 				where Login = :un and Password = :pw)
-				if id '=""{
+				if id = "" throw ##class(%Exception.General).%New("нет пользователя", 1)
+				
 					set obj = {}
 		 			set user = ##class(vol.data.User).%OpenId(id)
 		 			set obj.login = user.Login
@@ -45,7 +46,7 @@ ClassMethod LoginUser()
 			 		
 			 		write obj.%ToJSON()
 				}
-			}
+			
 		}
 		catch (ex) {
 		set st = ex.AsStatus()

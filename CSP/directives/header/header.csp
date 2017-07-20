@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/main">Волонтер</a>
+        </div>
+
+		<div class="navbar-left" ng-if="isOrganizer()">
+			<ui class="nav navbar-nav">
+				<li>
+					<a href="#!/event">Создать мероприятие</a>
+				</li>
+			</ui>
+		</div>
+
+        <div class="navbar-right" ng-if="isEnter()">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#!/profile">Добро пожаловать, <span ng-bind="userObject().name"></span>!</a>
+                </li>
+            </ul>
+        </div>
+
+        <form class="navbar-form navbar-right" ng-if="!isEnter()">
+            <div class="form-group">
+                <input type="text" ng-model="user.login" class="form-control" placeholder="Логин">
+                <input type="text" ng-model="user.password" class="form-control" placeholder="Пароль">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="login()">Вход</button>
+            <a class="btn btn-default" href="#!/registration">Регистрация</a>
+        </form>
+    </div>
+    <!-- /.container-fluid -->
+</nav>

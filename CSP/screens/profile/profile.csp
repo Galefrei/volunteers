@@ -1,0 +1,52 @@
+<div class = "container-fluid">
+	<div class = "col-sm-8 col-sm-offset-2">
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+  				<ul class="nav nav-tabs">
+  					<li class="active"><a data-toggle="tab" href="#home" target="_blank">Профиль</a></li>
+  					<li ng-if="personIsOrganizer()"><a data-toggle="tab" href="#company" target="_blank">Компания</a></li>
+				</ul>
+  			</div>
+  			<div class="panel-body">
+ 
+  				<h5></h5>
+  				 <div class="tab-content"> <!--для волонтера -->
+  				 
+  					<div id="home" class="tab-pane fade in active" ng-if="!personIsOrganizer()">
+    					<h3>{{user.volunteer.name}}</h3>
+    					<p>	
+    						Город: {{user.volunteer.city.name}} 
+    						</br>Дата рождения: {{user.volunteer.dob}}
+    						</br>Телефон: {{user.volunteer.phone}}
+    						</br>Почта: {{user.volunteer.email}}
+    						<!--</br>Навыки: {{user.volunteer.skills}}   -->     					
+    					</p>
+  					</div>
+  					
+  						<!-- для организатора -->
+  				 	<div id="home" class="tab-pane fade in active" ng-if="personIsOrganizer()">
+    					<h3>{{user.organizer.name}}</h3>
+    					<p>	    					
+    						</br>Телефон: {{user.organizer.phone}}    											
+    					</p>
+  					</div>
+
+  					<div id="company" class="tab-pane fade" >
+    					<h3>{{user.organizer.organization.name}}</h3>
+    					<p>
+    						Город: {{user.organizer.organization.city}}
+    						</br>Телефон: {{user.organizer.organization.phone}}
+    						</br>Описание: {{user.organizer.organization.description}}       						
+  				 		</p>
+  				 	</div> 
+				</div> 
+				<div class="col-sm-8" style="padding-left: 0px;"> 
+						
+      							<button type="submit" class="btn btn-default" ng-click="">Редактировать</button>
+      							<button type="cancel" class="btn btn-default" ng-click="cancel()">Назад</button>
+    						</div>
+  			</div>
+		</div>
+	</div>
+</div>    
+				

@@ -1,8 +1,8 @@
-mainModule.controller('EventCtrl', function($scope, $http, $routeParams, $location){
+mainModule.controller('EventCtrl', function($scope, $http, $routeParams, $location, broker){
 
 	console.log($routeParams.id);
 
-		$http.get("broker/event/"+$routeParams.id).then(
+		$http.get(broker + "event/"+$routeParams.id).then(
 			function(data) {
 			
 				$scope.event = data.data;

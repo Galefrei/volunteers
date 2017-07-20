@@ -23,7 +23,8 @@ ClassMethod GetOrganizations()
  			set obj.name = organization.Name
  		  	set obj.phone = organization.PhoneOrganization
  		  	set obj.city = {}
- 		    set obj.city.name = city.City  
+ 		    set obj.city.name = city.City
+ 		    set obj.description =  organization.Description 
  		    do array.%Push(obj)  
 		}
 		
@@ -50,7 +51,7 @@ ClassMethod CreateOrganization()
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    //создание орга
 	    
-	    set organization = ##class(vol.logic.Organization).Create(data)
+	    do ##class(vol.logic.Organization).Create(data)
 		TCOMMIT
 	  	}
 	  	catch (ex) {

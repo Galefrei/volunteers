@@ -11,7 +11,7 @@ ClassMethod CreateRegistrationOnEvent()
 	    // Преобразовали входную строку JSON в объект proxyObject
 	    $$$THROWONERROR(st, ##class(%ZEN.Auxiliary.jsonProvider).%ConvertJSONToObject(%request.Content,,.data,1))
 	    
-	     set regEvent = ##class(vol.logic.RegistrationOnEvent).Create(data)
+	     do ##class(vol.logic.RegistrationOnEvent).Create(data)
 	    TCOMMIT
 	  	}
 	  	catch (ex) {
@@ -19,6 +19,11 @@ ClassMethod CreateRegistrationOnEvent()
 		  	set st = ex.AsStatus()
 		}
     return st
+}
+
+ClassMethod DeleteRegistrationOnEvent(id As %String) As %Status
+{
+	quit ##class(vol.data.RegistrationOnEvent).%DeleteId(id)
 }
 
 Storage Default

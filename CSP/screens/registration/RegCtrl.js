@@ -1,4 +1,4 @@
-mainModule.controller('RegCtrl', function($scope, $http, $location){
+mainModule.controller('RegCtrl', function($scope, $http, $location, broker){
 	$scope.user = {
 		name: "",
 		dob: "",
@@ -9,7 +9,7 @@ mainModule.controller('RegCtrl', function($scope, $http, $location){
 		password: ""
 	};
 
-	$http.get("broker/city").then(
+	$http.get(broker + "city").then(
 			function(data){
 				$scope.array = data.data;
 			}, 

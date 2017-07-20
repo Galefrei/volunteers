@@ -1,5 +1,5 @@
 mainModule.service("authorization", 
 		function(){
-			return {user:" "};
+			return {user:""};
 		}
 );

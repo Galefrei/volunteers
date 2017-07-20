@@ -1,0 +1,56 @@
+<div class = "container-fluid">
+	<div class = "col-sm-8 col-sm-offset-2">
+<form class="form-horizontal">
+ <h2 class="text-center" style="margin-bottom: 30px;">Создать организацию</h2>
+  <div class="form-group">
+    <label for="name" class="col-sm-3 control-label">Название организации</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="name" ng-model="organization.name">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="city" class="col-sm-3 control-label">Город организации</label>
+    <div class="col-sm-6">
+      <select ng-options="a as a.name for a in array" class="form-control" id="city" ng-model="organization.city">
+      </select>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="phone" class="col-sm-3 control-label">Телефон организации</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="phone" ng-model="organization.phone">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="description" class="col-sm-3 control-label">Примечание</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="descrition" ng-model="organization.descrition">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="name" class="col-sm-3 control-label">Организатор</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="name" ng-model="organization.organizer.name">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="phone" class="col-sm-3 control-label">Телефон организации</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="phone" ng-model="organization.organizer.phone">
+    </div>
+  </div>
+     
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-6">
+      <button type="submit" class="btn btn-default" ng-click="save()">Создать организацию</button>
+      <button type="cancel" class="btn btn-default" ng-click="cancel()">Отмена</button>
+    </div>
+  </div>
+</form>
+</div>
+</div>

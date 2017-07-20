@@ -1,0 +1,61 @@
+<div class="container-fluid">
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#user" target="_blank">Пользователи</a></li>
+     <li><a data-toggle="pill" href="#organization" target="_blank">Организации</a></li>
+</ul>
+<div class="tab-content">
+  <div id="user" class="tab-pane fade in active">
+    <table class="table table-hover table-bordeorganizationred">
+  		<thead>
+    		<tr>
+      		<th>ФИО</th>
+      		<th>Город</th>
+      		<th>Телефон</th>
+      		<th>Email</th>
+      		<th>Логин</th>
+      		<th>Пароль</th>
+   			</tr>
+  		</thead>
+  	<tbody>
+    	<tr ng-repeat = "a in users">
+    	<td>{{a.volunteer.name}}</td>
+    	<td>{{a.volunteer.city.name}}</td>
+    	<td>{{a.volunteer.phone}}</td>
+    	<td>{{a.volunteer.email}}</td>
+    	<td>{{a.login}}</td>
+    	<td>{{a.password}}</td>
+    	</tr>
+  	</tbody>
+ </table>
+  </div>
+  <div id="organization" class="tab-pane fade">
+     <table class="table table-hover table-bordeorganizationred">
+  		<thead>
+    		<tr>
+      		<th>Организация</th>
+      		<th>Город организации</th>
+      		<th>Телефон организации</th>
+      		<th>Примечание</th>
+      		<th>Организатор</th>
+      		<th>Телефон организатора</th>
+   			</tr>
+  		</thead>
+  	<tbody>
+    	<tr ng-repeat = "b in organizations">
+    	<td>{{b.name}}</td>
+    	<td>{{b.city.name}}</td>
+    	<td>{{b.phone}}</td>
+    	<td>{{b.description}}</td>
+    	<td>{{b.organizer.name}}</td>
+    	<td>{{b.organizer.phone}}</td>
+    	</tr>
+  	</tbody>
+</table>
+<div class="col-sm-8" style="padding-left: 0px;">
+     <button type="submit" class="btn btn-default" ng-click="create()">Создать организацию</button>
+     <button type="cancel" class="btn btn-default" ng-click="update()">Изменить организацию</button>
+     <button type="cancel" class="btn btn-default" ng-click="update()">удалить организацию</button>
+</div>
+</div>
+</div>
+</div>

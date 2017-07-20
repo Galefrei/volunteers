@@ -14,4 +14,4 @@ mainModule.config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/main'});
 }]);
 
-mainModule.constant('broker', "http://217.144.174.69:57772/csp/volunteers/broker/");
+mainModule.constant('broker', "broker/");

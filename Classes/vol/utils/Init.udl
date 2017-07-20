@@ -1,17 +1,112 @@
+Include Src.Utils.Macro
+
 Class vol.utils.Init
 {
+
+ClassMethod Init()
+{
+    try {
+        
+        w "Создание города ", !
+        do ..CityInit()
+        
+        w "Создание организаций", !
+        do ..OrgInit()
+        
+        w "Создание пользователя для организатора", !
+        do ..UserOrgInit()
+        
+        w "Создание пользователя для волонтера", !
+        do ..UserVolInit()
+        
+        w "Создание события", !
+        do ..EventInit()
+
+    } catch e {
+        set st = e.AsStatus()
+        zw st   
+    }
+}
+
+ClassMethod OrgInit()
+{
+    set org = ##class(vol.data.Organization).%New()
+    
+    set org.Name = "ТФОМС"
+    set org.Description = "Медицинская организация, которая меня достала при разработке СПГ"
+    set org.PhoneOrganization = "2-397-876"
+    set org.CityOrganization = ##class(vol.data.City).%OpenId(1)
+    
+    $$$do(org.%Save())
+    w org.%Id()
+}
+
+ClassMethod UserOrgInit()
+{
+    set user = ##class(vol.data.User).%New()
+    
+    set user.Login = "org"
+    set user.Password = "123"
+    
+    set user.Organizer = ##class(vol.data.Organizer).%New()
+    set user.Organizer.Name = "Островский Владимир Владимирович"
+    set user.Organizer.Organization = ##class(vol.data.Organization).%OpenId(1)
+    set user.Organizer.PhoneOrganizer = "8-300-100-2039"
+    
+    $$$do(user.%Save())
+}
+
+ClassMethod UserVolInit()
+{
+    set user = ##class(vol.data.User).%New()
+    
+    set user.Login = "vol"
+    set user.Password = "123"
+    set user.Volunteer = ##class(vol.data.Volunteer).%New()
+    set user.Volunteer.Name = "Азанов Виталий Генадьевич"
+    set user.Volunteer.PhoneVolunteer = "8-800-555-35-35"
+    set user.Volunteer.Email = "azanov@mail.ru"
+    set user.Volunteer.DOB = "19.07.2012"
+    
+    $$$do(user.%Save())
+}
 
 ClassMethod CityInit()
 {
     set city = ##class(vol.data.City).%New()
     
     set city.City = "Красноярск"
-    w city.%Save(), !
+    $$$do(city.%Save())
     
     set city = ##class(vol.data.City).%New()
     
     set city.City = "Владивосток"
-    w city.%Save(), !
+    $$$do(city.%Save())
+}
+
+ClassMethod EventInit()
+{
+    set event = ##class(vol.data.Event).%New()
+    
+    set event.Name = "Агитация к борьбе с раком"
+    set event.CityEvent = ##class(vol.data.City).%OpenId(1)
+    set event.DescriptionEvent = "Городская акция"
+    set event.OrganizerEvent = ##class(vol.data.Organizer).%OpenId(1)
+    set event.BeginDate = "2017-07-20 00:00:00"
+    set event.EndDate = "2017-07-20 06:00:00"
+    
+    $$$do(event.%Save())
+    
+    set event = ##class(vol.data.Event).%New()
+    
+    set event.Name = "Агитация к борьбе с раком 2"
+    set event.CityEvent = ##class(vol.data.City).%OpenId(1)
+    set event.DescriptionEvent = "Городская акция"
+    set event.OrganizerEvent = ##class(vol.data.Organizer).%OpenId(1)
+    set event.BeginDate = "2017-07-20 00:00:00"
+    set event.EndDate = "2017-07-20 06:00:00"
+    
+    $$$do(event.%Save())
 }
 
 }

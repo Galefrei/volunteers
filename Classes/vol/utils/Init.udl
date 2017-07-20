@@ -33,8 +33,8 @@ ClassMethod OrgInit()
     set org = ##class(vol.data.Organization).%New()
     
     set org.Name = "ТФОМС"
-    set org.Description = "Медицинская организация, которая меня достала при разработке СПГ"
-    set org.PhoneOrganization = "2-397-876"
+    set org.Description = "Медицинская организация"
+    set org.PhoneOrganization = "89655899655"
     set org.CityOrganization = ##class(vol.data.City).%OpenId(1)
     
     $$$do(org.%Save())
@@ -51,7 +51,7 @@ ClassMethod UserOrgInit()
     set user.Organizer = ##class(vol.data.Organizer).%New()
     set user.Organizer.Name = "Островский Владимир Владимирович"
     set user.Organizer.Organization = ##class(vol.data.Organization).%OpenId(1)
-    set user.Organizer.PhoneOrganizer = "8-300-100-2039"
+    set user.Organizer.PhoneOrganizer = "83001002039"
     
     $$$do(user.%Save())
 }
@@ -64,9 +64,10 @@ ClassMethod UserVolInit()
     set user.Password = "123"
     set user.Volunteer = ##class(vol.data.Volunteer).%New()
     set user.Volunteer.Name = "Азанов Виталий Генадьевич"
-    set user.Volunteer.PhoneVolunteer = "8-800-555-35-35"
+    set user.Volunteer.PhoneVolunteer = "88005553535"
     set user.Volunteer.Email = "azanov@mail.ru"
-    set user.Volunteer.DOB = "19.07.2012"
+    set user.Volunteer.DOB = "1995-11-12 00:00:00"
+     set user.Volunteer.CityVolunteer= ##class(vol.data.City).%OpenId(1)
     
     $$$do(user.%Save())
 }

@@ -1,0 +1,70 @@
+<div class = "container-fluid">
+	<div class = "col-sm-8 col-sm-offset-2">
+<form class="form-horizontal">
+ <h2 class="text-center" style="margin-bottom: 30px;">Создать пользователя</h2>
+  <div class="form-group">
+    <label for="name" class="col-sm-3 control-label">ФИО</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="name" ng-model="user.name">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="dob" class="col-sm-3 control-label">Телефон</label>
+    <div class="col-sm-6">
+      <input type="date" class="form-control" id="dob" ng-model="user.dob">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="city" class="col-sm-3 control-label">Город</label>
+    <div class="col-sm-6">
+      <select ng-options="a as a.name for a in array" class="form-control" id="city" ng-model="user.city">
+      </select>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="phone" class="col-sm-3 control-label">Телефон</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="phone" ng-model="user.phone">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="email" class="col-sm-3 control-label">Email</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="email" ng-model="user.email">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="description" class="col-sm-3 control-label">Примечание</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="descrition" ng-model="user.descrition">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="login" class="col-sm-3 control-label">Логин</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="login" ng-model="user.login">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="password" class="col-sm-3 control-label">Пароль</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="user.password" ng-model="user.password">
+    </div>
+  </div>
+     
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-6">
+      <button type="submit" class="btn btn-default" ng-click="save()">Создать пользователя</button>
+      <button type="cancel" class="btn btn-default" ng-click="cancel()">Отмена</button>
+    </div>
+  </div>
+</form>
+</div>
+</div>

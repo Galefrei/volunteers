@@ -20,6 +20,7 @@ ClassMethod LoginUser()
 		 			{
 			 			set city = user.Volunteer.CityVolunteer
 			 		set obj.volunteer = {}
+			 		set obj.volunteer.id = user.Volunteer.%Id()
 			 		set obj.volunteer.name = user.Volunteer.Name
 			 		set obj.volunteer.dob = user.Volunteer.DOB
 			 		set obj.volunteer.phone = user.Volunteer.PhoneVolunteer
@@ -31,6 +32,7 @@ ClassMethod LoginUser()
 		 			{
 			 			set city = user.Organizer.Organization.CityOrganization
 			 		set obj.organizer = {}
+			 		set obj.organizer.id = user.Organizer.%Id()
 			 		set obj.organizer.name = user.Organizer.Name
 			 		set obj.organizer.phone = user.Organizer.PhoneOrganizer
 			 		set obj.organizer.organization = {}
@@ -72,6 +74,7 @@ ClassMethod GetUsers()
 		 		{
 			 		set city = user.Volunteer.CityVolunteer
 			 		set obj.volunteer = {}
+			 		set obj.volunteer.id = user.Volunteer.%Id()
 			 		set obj.volunteer.name = user.Volunteer.Name
 			 		set obj.volunteer.dob = user.Volunteer.DOB
 			 		set obj.volunteer.phone = user.Volunteer.PhoneVolunteer
@@ -83,6 +86,7 @@ ClassMethod GetUsers()
 		 		{
 			 		set city = user.Organizer.Organization.CityOrganization
 			 		set obj.organizer = {}
+			 		set obj.organizer.id = user.Organizer.%Id()
 			 		set obj.organizer.name = user.Organizer.Name
 			 		set obj.organizer.phone = user.Organizer.PhoneOrganizer
 			 		set obj.organizer.organization = {}

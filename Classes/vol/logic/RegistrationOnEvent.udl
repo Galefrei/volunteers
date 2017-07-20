@@ -4,6 +4,8 @@ Class vol.logic.RegistrationOnEvent Extends %Persistent
 ClassMethod Create(obj As %DynamicObject)
 {
 	set regEvent = ##class(vol.dal.RegistrationOnEvent).Create()
+	do ..Transform(obj,.regEvent)
+	do ##class(vol.dal.RegistrationOnEvent).Save(regEvent)
 }
 
 ClassMethod Transform(obj As %DynamicObject, ByRef regEvent As vol.data.RegistrationOnEvent)

@@ -8,12 +8,12 @@ ClassMethod Create(obj As %DynamicObject)
 	do ##class(vol.dal.Event).Save(event)
 }
 
-ClassMethod Transform(data As %DynamicObject, ByRef event As vol.data.Event)
+ClassMethod Transform(obj As %DynamicObject, ByRef event As vol.data.Event)
 {
 		set event.Name = $ZCONVERT(obj.name, "I", "UTF8")
 	  	set event.BeginDate = $ZCONVERT(obj.begin, "I", "UTF8")
 	  	set event.EndDate = $ZCONVERT(obj.end, "I", "UTF8")
-	  	set event.DescriptionEvent = $ZCONVERT(data.description, "I", "UTF8") 
+	  	set event.DescriptionEvent = $ZCONVERT(obj.description, "I", "UTF8") 
 	   	set event.CityEvent = ##class(vol.data.City).%OpenId(obj.city.id)
 	   	set event.OrganizerEvent = ##class(vol.data.Organizer).%OpenId(obj.organizer.id)
 }
